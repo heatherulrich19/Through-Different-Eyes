@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Through Different Eyes — Accessibility Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-top:#1a1511;
+  --bg-bottom:#0e0b08;
+  --card-bg:#1f1912;
+  --card-bg-soft:#241d15;
+  --border-subtle:#3c3024;
+  --cream:#f3e4c8;
+  --cream-dim:#c9bba3;
+  --gray-text:#a79d8f;
+  --orange:#e0953c;
+  --orange-light:#f0b36a;
+  --orange-dark:#a85f24;
+  --dark-text:#19130c;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  background:linear-gradient(160deg,var(--bg-top) 0%,var(--bg-bottom) 100%);
+  color:var(--gray-text);
+  min-height:100vh;
+  padding:20px;
+}
+.container{max-width:1400px;margin:0 auto;}
+header{text-align:center;margin-bottom:50px;padding:40px 0;border-bottom:1px solid var(--border-subtle);}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:4px;
+  color:var(--orange);
+  font-size:0.8em;
+  font-weight:700;
+  margin-bottom:18px;
+}
+h1{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:3em;
+  color:var(--cream);
+  margin-bottom:16px;
+  font-weight:800;
+}
+.tagline{font-size:1.05em;color:var(--gray-text);max-width:600px;margin:0 auto;line-height:1.6;}
+.content{display:none;}
+.content.active{display:block;animation:fadeIn .5s ease-in;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.intro-screen{
+  background:var(--card-bg);
+  border:1px solid var(--border-subtle);
+  border-radius:12px;
+  padding:60px 40px;
+  text-align:center;
+  max-width:800px;
+  margin:0 auto;
+}
+.intro-screen h2{font-family:'Playfair Display',Georgia,serif;font-size:2em;color:var(--cream);margin-bottom:30px;}
+.intro-screen p{font-size:1.1em;line-height:1.8;margin-bottom:20px;color:var(--gray-text);}
+.intro-screen .emphasis{color:var(--orange);font-weight:700;}
+.button-group{display:flex;gap:20px;justify-content:center;margin-top:40px;flex-wrap:wrap;}
+button{
+  padding:16px 42px;
+  font-size:0.9em;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  transition:all .3s ease;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.btn-primary{background:var(--orange);color:var(--dark-text);}
+.btn-primary:hover{background:var(--orange-light);transform:translateY(-2px);box-shadow:0 10px 24px rgba(224,149,60,0.25);}
+.btn-secondary{background:transparent;border:2px solid var(--border-subtle);color:var(--cream-dim);}
+.btn-secondary:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px);}
+.small-btn{padding:10px 24px;font-size:0.75em;}
+.scenario-screen{background:var(--card-bg);border:1px solid var(--border-subtle);border-radius:12px;padding:30px;margin-bottom:30px;}
+.scenario-header{display:flex;align-items:center;gap:20px;margin-bottom:30px;padding-bottom:20px;border-bottom:1px solid var(--border-subtle);}
+.scenario-icon{font-size:3em;}
+.scenario-title{flex:1;}
+.scenario-title h2{font-family:'Playfair Display',Georgia,serif;font-size:1.7em;color:var(--cream);margin-bottom:5px;}
+.scenario-title p{color:var(--orange);font-size:0.9em;}
+.frustration-meter{background:var(--bg-bottom);border:1px solid var(--border-subtle);border-radius:50px;height:28px;overflow:hidden;margin-left:auto;width:200px;}
+.frustration-bar{
+  height:100%;
+  background:linear-gradient(90deg,var(--cream),var(--orange),var(--orange-dark));
+  width:0%;
+  transition:width .5s ease;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff8ef;text-shadow:0 1px 3px rgba(0,0,0,.6);
+  font-weight:700;font-size:0.8em;
+}
+.split-screen{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:30px;}
+.panel{background:var(--card-bg-soft);border:1px solid var(--border-subtle);border-radius:8px;padding:20px;min-height:300px;display:flex;flex-direction:column;}
+.panel.experienced{border-color:var(--orange-dark);}
+.panel-label{font-weight:700;font-size:0.85em;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid;display:flex;align-items:center;flex-wrap:wrap;text-transform:uppercase;letter-spacing:0.5px;}
+.panel.intended .panel-label{color:var(--cream);border-color:var(--border-subtle);}
+.panel.experienced .panel-label{color:var(--orange);border-color:var(--orange-dark);}
+.panel-content{flex:1;overflow:hidden;}
+.blur-effect{filter:blur(8px);opacity:.6;}
+.jargon-text{font-size:0.95em;line-height:1.9;color:var(--cream-dim);}
+.jargon-term{border-bottom:1px dotted var(--orange);color:var(--orange-light);cursor:help;}
+.idea-sentence{transition:background .4s ease, padding .4s ease;}
+.idea-sentence.revealed{background:rgba(224,149,60,.28);padding:2px 4px;border-radius:4px;}
+.instruction-banner{background:rgba(224,149,60,.07);border-left:4px solid var(--orange);border-radius:6px;padding:16px 20px;margin-bottom:25px;color:var(--cream-dim);line-height:1.7;font-size:0.95em;}
+.instruction-banner strong{color:var(--orange);}
+.hint-note{font-size:0.88em;color:var(--orange-light);margin-top:16px;font-style:italic;padding-top:14px;border-top:1px dashed var(--border-subtle);}
+.reading-label{text-transform:uppercase;letter-spacing:1.5px;color:var(--orange);font-size:0.75em;font-weight:700;margin-bottom:12px;}
+.reveal-note{display:none;margin-top:15px;padding:12px 15px;background:rgba(224,149,60,.1);border-left:3px solid var(--orange);border-radius:4px;color:var(--cream-dim);font-size:0.9em;}
+.reveal-note.show{display:block;animation:slideIn .4s ease;}
+.syllabus-content{font-size:0.9em;line-height:1.6;}
+.syllabus-section{margin-bottom:15px;}
+.syllabus-section h3{color:var(--orange);margin-bottom:8px;font-size:1em;}
+.lecture-transcript{background:var(--bg-bottom);padding:15px;border-radius:6px;font-size:0.9em;line-height:1.7;margin-bottom:15px;min-height:180px;}
+.caption-line{margin-bottom:10px;padding:6px;opacity:0;transform:translateY(6px);transition:opacity .4s ease, transform .4s ease;}
+.caption-line.visible{opacity:1;transform:translateY(0);}
+.caption-correct{color:var(--cream);}
+.caption-garbled{color:var(--orange-light);font-family:'Courier New',monospace;letter-spacing:.5px;}
+.caption-buffering{color:var(--gray-text);font-style:italic;}
+.buffering-dots::after{content:'...';animation:dots 1.2s steps(4,end) infinite;}
+@keyframes dots{0%,20%{content:'.';}40%{content:'..';}60%,100%{content:'...';}}
+.caption-dropped{background:rgba(224,149,60,.12);border:1px dashed var(--orange-dark);padding:10px;border-radius:4px;color:var(--orange);font-weight:700;}
+.live-indicator{display:inline-flex;align-items:center;gap:6px;background:var(--orange-dark);color:var(--cream);padding:3px 10px;border-radius:3px;font-size:0.7em;font-weight:700;letter-spacing:1px;margin-left:auto;}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--orange-light);animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.caption-callout{margin-top:15px;padding:12px 15px;background:rgba(224,149,60,.1);border-left:4px solid var(--orange);border-radius:4px;color:var(--orange-light);font-style:italic;display:none;}
+.caption-callout.show{display:block;animation:slideIn .4s ease;}
+.quiz-question{background:var(--bg-bottom);padding:20px;border-radius:6px;margin-bottom:15px;}
+.quiz-question h4{color:var(--orange);margin-bottom:15px;}
+.quiz-options{display:flex;flex-direction:column;gap:10px;}
+.quiz-option{padding:12px;background:var(--card-bg);border:1px solid var(--border-subtle);border-radius:4px;cursor:pointer;transition:all .3s ease;color:var(--cream-dim);}
+.quiz-option:hover{border-color:var(--orange);background:var(--card-bg-soft);}
+.quiz-option.tiny-target{padding:4px;font-size:0.7em;}
+.decision-section{background:var(--card-bg-soft);border-left:4px solid var(--orange);padding:20px;border-radius:6px;margin-top:20px;}
+.decision-section h3{color:var(--cream);margin-bottom:15px;}
+.decision-options{display:flex;flex-direction:column;gap:12px;}
+.decision-btn{padding:12px 20px;background:rgba(224,149,60,.1);border:1px solid var(--orange-dark);color:var(--orange-light);border-radius:6px;cursor:pointer;transition:all .3s ease;text-align:left;font-weight:700;text-transform:none;letter-spacing:normal;font-size:0.95em;}
+.decision-btn:hover{background:rgba(224,149,60,.2);transform:translateX(10px);border-color:var(--orange);}
+.feedback-box{background:rgba(224,149,60,.08);border:1px solid var(--orange);border-radius:6px;padding:20px;margin-top:20px;display:none;}
+.feedback-box.show{display:block;animation:slideIn .4s ease;}
+@keyframes slideIn{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.feedback-box h4{color:var(--orange);margin-bottom:10px;}
+.feedback-box p{color:var(--cream-dim);line-height:1.6;}
+.debrief-screen{background:var(--card-bg);border:1px solid var(--border-subtle);border-radius:12px;padding:40px;}
+.debrief-screen h2{font-family:'Playfair Display',Georgia,serif;font-size:2em;color:var(--cream);margin-bottom:30px;text-align:center;}
+.reflection-prompt{background:var(--card-bg-soft);border-left:4px solid var(--orange);padding:20px;margin-bottom:20px;border-radius:6px;}
+.reflection-prompt h3{color:var(--orange);margin-bottom:10px;}
+.reflection-prompt p{color:var(--cream-dim);line-height:1.7;}
+.checklist{background:var(--card-bg-soft);border:1px solid var(--border-subtle);border-radius:8px;padding:20px;margin-top:30px;}
+.checklist h3{color:var(--orange);margin-bottom:20px;}
+.checklist-item{display:flex;align-items:flex-start;gap:15px;margin-bottom:15px;padding:12px;background:var(--bg-bottom);border-radius:6px;cursor:pointer;transition:all .3s ease;}
+.checklist-item:hover{background:#15110c;}
+.checklist-item input[type="checkbox"]{width:20px;height:20px;cursor:pointer;margin-top:2px;flex-shrink:0;accent-color:var(--orange);}
+.checklist-item label{cursor:pointer;flex:1;color:var(--cream-dim);}
+.checklist-item input[type="checkbox"]:checked + label{color:var(--orange);text-decoration:line-through;}
+.progress-bar{background:var(--bg-bottom);border:1px solid var(--border-subtle);border-radius:4px;height:6px;margin-bottom:30px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-light));width:0%;transition:width .5s ease;}
+@media (max-width:1024px){.split-screen{grid-template-columns:1fr;}.scenario-header{flex-direction:column;align-items:flex-start;}.frustration-meter{width:100%;margin-left:0;margin-top:15px;}h1{font-size:2.1em;}}
+@media (max-width:768px){.intro-screen{padding:40px 20px;}h1{font-size:1.7em;}.scenario-header{gap:10px;}.scenario-icon{font-size:2em;}button{padding:13px 28px;font-size:0.8em;}}
+.timer{display:inline-block;background:var(--orange-dark);color:var(--cream);padding:8px 16px;border-radius:4px;font-weight:700;margin-left:10px;text-transform:none;letter-spacing:normal;}
+.timer.warning{animation:pulse .5s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.6;}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <p class="eyebrow">Interactive Faculty Development Activity</p>
+  <h1>Through Different Eyes</h1>
+  <p class="tagline">Experience accessibility barriers firsthand</p>
+</header>
+
+<div id="introScreen" class="content active">
+  <div class="intro-screen">
+    <h2>Welcome to the Simulation</h2>
+    <p>In the next few minutes, you'll experience what it's like to be a student encountering <span class="emphasis">accessibility barriers</span> in your course materials.</p>
+    <p>Each scenario shows you two perspectives: what your instructor intended to create, and what a student with a disability actually experiences.</p>
+    <p>Pay attention to your frustration level. This is what your students feel every day.</p>
+    <div class="button-group">
+      <button class="btn-primary" onclick="startSimulation()">Begin Simulation →</button>
+      <button class="btn-secondary" onclick="showInstructions()">How It Works</button>
+    </div>
+  </div>
+</div>
+
+<div id="instructionsScreen" class="content">
+  <div class="intro-screen">
+    <h2>How This Works</h2>
+    <p style="text-align:left;margin-bottom:20px;"><strong>You'll encounter 4 scenarios:</strong></p>
+    <div style="text-align:left;margin-bottom:30px;">
+      <p><strong>👁️ The Unreadable Syllabus</strong> — Experience low vision and blindness</p>
+      <p><strong>🦻 The Silent Lecture</strong> — Experience deafness and hard of hearing</p>
+      <p><strong>🧠 The Cognitive Overload</strong> — Experience dyslexia and cognitive disabilities</p>
+      <p><strong>🖐️ The Impossible Quiz</strong> — Experience motor and mobility challenges</p>
+    </div>
+    <p style="text-align:left;margin-bottom:20px;"><strong>In each scenario:</strong> Make choices and see how barriers compound. Your frustration meter tracks the emotional toll. At the end, you'll get actionable fixes you can implement in your own courses.</p>
+    <div class="button-group">
+      <button class="btn-primary" onclick="startSimulation()">Start Now →</button>
+      <button class="btn-secondary" onclick="backToIntro()">Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scenario 1 -->
+<div id="scenario1Screen" class="content">
+  <div class="progress-bar"><div class="progress-fill" style="width:25%;"></div></div>
+  <div class="scenario-screen">
+    <div class="scenario-header">
+      <div class="scenario-icon">👁️</div>
+      <div class="scenario-title"><h2>The Unreadable Syllabus</h2><p>Low Vision / Blindness — Scanned image PDFs, missing alt text</p></div>
+      <div class="frustration-meter"><div class="frustration-bar" id="frustration1" style="width:0%;">0%</div></div>
+    </div>
+    <div class="split-screen">
+      <div class="panel intended">
+        <div class="panel-label">✓ What the Instructor Intended</div>
+        <div class="panel-content">
+          <div class="syllabus-content">
+            <div class="syllabus-section"><h3>Course Overview</h3><p>This course explores the history of digital media and its impact on society. Students will analyze primary sources, engage in critical discussions, and produce original research.</p></div>
+            <div class="syllabus-section"><h3>Learning Outcomes</h3><p>By the end of this course, you will be able to:</p><ul style="margin-left:20px;"><li>Analyze media critically</li><li>Conduct original research</li><li>Present findings effectively</li></ul></div>
+            <div class="syllabus-section"><h3>Grading</h3><p>Participation: 20% | Assignments: 40% | Final Project: 40%</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel experienced">
+        <div class="panel-label">✗ What the Student Actually Experiences</div>
+        <div class="panel-content">
+          <div class="syllabus-content blur-effect">
+            <p style="color:var(--gray-text);margin-bottom:20px;">[Scanned image of syllabus — no text layer, no alt text]</p>
+            <p style="color:var(--orange-light);font-style:italic;">"I can't read this. My screen reader can't access it. I don't know what this course requires."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="decision-section">
+      <h3>What do you do?</h3>
+      <div class="decision-options">
+        <button class="decision-btn" onclick="scenario1Choice('email')">Email the professor asking for an accessible version</button>
+        <button class="decision-btn" onclick="scenario1Choice('guess')">Try to guess what the syllabus says and hope for the best</button>
+        <button class="decision-btn" onclick="scenario1Choice('drop')">Drop the course — it's too much hassle</button>
+      </div>
+    </div>
+    <div id="feedback1" class="feedback-box"><h4>💡 What Just Happened</h4><p id="feedbackText1"></p></div>
+    <div style="text-align:center;margin-top:30px;"><button class="btn-primary" onclick="nextScenario(2)">Continue →</button></div>
+  </div>
+</div>
+
+<!-- Scenario 2 -->
+<div id="scenario2Screen" class="content">
+  <div class="progress-bar"><div class="progress-fill" style="width:50%;"></div></div>
+  <div class="scenario-screen">
+    <div class="scenario-header">
+      <div class="scenario-icon">🦻</div>
+      <div class="scenario-title"><h2>The Silent Lecture</h2><p>Deaf / Hard of Hearing — No captions, garbled auto-captions</p></div>
+      <div class="frustration-meter"><div class="frustration-bar" id="frustration2" style="width:0%;">0%</div></div>
+    </div>
+    <div class="split-screen">
+      <div class="panel intended">
+        <div class="panel-label">✓ What the Instructor Actually Said</div>
+        <div class="panel-content">
+          <div class="lecture-transcript">
+            <div class="caption-line caption-correct" id="int2-1"><strong>[0:00]</strong> "The printing press, invented by Gutenberg around 1440, revolutionized information distribution across Europe."</div>
+            <div class="caption-line caption-correct" id="int2-2"><strong>[0:16]</strong> "This democratized knowledge and fundamentally challenged existing ecclesiastical and political power structures."</div>
+            <div class="caption-line caption-correct" id="int2-3"><strong>[0:33]</strong> "For your midterm, remember these three key dates: 1440, 1517, and 1536."</div>
+            <div class="caption-line caption-correct" id="int2-4"><strong>[0:52]</strong> "Today we'll explore how digital media is having a strikingly similar disruptive effect on modern institutions."</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel experienced">
+        <div class="panel-label">✗ What the Student Actually Experiences<span class="live-indicator"><span class="live-dot"></span>AUTO-CAPTION</span></div>
+        <div class="panel-content">
+          <div class="lecture-transcript" id="captionFeed2">
+            <div class="caption-line caption-garbled" id="cap2-1">[0:00] "the printing press of dented by good enberg around four forty revolution ice information distribution across your rope"</div>
+            <div class="caption-line caption-garbled" id="cap2-2">[0:17] "this democracy ties knowledge and fund a mentally challenged exist thing uh political power structures"</div>
+            <div class="caption-line caption-buffering buffering-dots" id="cap2-3">[0:33] buffering</div>
+            <div class="caption-line" id="cap2-4"></div>
+          </div>
+          <div class="caption-callout" id="cap2-callout">💔 The exam dates were never captioned. By the time the system caught up, the professor had already moved to the next slide.</div>
+        </div>
+      </div>
+    </div>
+    <div class="decision-section">
+      <h3>What do you do?</h3>
+      <div class="decision-options">
+        <button class="decision-btn" onclick="scenario2Choice('chat')">Type in the class chat asking the professor to repeat the exam dates</button>
+        <button class="decision-btn" onclick="scenario2Choice('guess')">Guess the dates from context and hope you're right</button>
+        <button class="decision-btn" onclick="scenario2Choice('syllabus')">Check the syllabus for the dates instead</button>
+      </div>
+    </div>
+    <div id="feedback2" class="feedback-box"><h4>💡 What Just Happened</h4><p id="feedbackText2"></p></div>
+    <div style="text-align:center;margin-top:30px;"><button class="btn-primary" onclick="nextScenario(3)">Continue →</button></div>
+  </div>
+</div>
+
+<!-- Scenario 3 -->
+<div id="scenario3Screen" class="content">
+  <div class="progress-bar"><div class="progress-fill" style="width:75%;"></div></div>
+  <div class="scenario-screen">
+    <div class="scenario-header">
+      <div class="scenario-icon">🧠</div>
+      <div class="scenario-title"><h2>The Cognitive Overload</h2><p>Dyslexia / Cognitive Disabilities — Jargon, embedded clauses, passive voice, no visual breaks</p></div>
+      <div class="frustration-meter"><div class="frustration-bar" id="frustration3" style="width:0%;">0%</div></div>
+    </div>
+
+    <div class="instruction-banner">
+      <strong>How this one works:</strong> Read the left panel first — it's the plain-language overview your professor posted. Then move to the reading on the right and see how long it takes to find those same concepts and questions buried inside it.
+    </div>
+
+    <div class="split-screen">
+      <div class="panel intended">
+        <div class="panel-label">✓ What the Instructor Intended</div>
+        <div class="panel-content">
+          <div class="syllabus-content">
+            <h3 style="color:var(--orange);margin-bottom:15px;">Reading Assignment: Chapter 3</h3>
+            <p><strong>Main Idea:</strong> Digital media has transformed how we consume information.</p>
+            <p style="margin-top:10px;"><strong>Key Points:</strong></p>
+            <ul style="margin-left:20px;margin-top:8px;">
+              <li>Speed of information distribution</li>
+              <li>Democratization of content creation</li>
+              <li>New forms of misinformation</li>
+            </ul>
+            <p style="margin-top:15px;"><strong>Questions to Consider:</strong></p>
+            <ul style="margin-left:20px;margin-top:8px;">
+              <li>How has social media changed journalism?</li>
+              <li>What are the benefits and drawbacks?</li>
+            </ul>
+          </div>
+          <p class="hint-note">Keep these concepts and questions in mind as you complete the following reading.</p>
+        </div>
+      </div>
+      <div class="panel experienced">
+        <div class="panel-label">✗ What the Student Actually Experiences</div>
+        <div class="panel-content">
+          <p class="reading-label">Reading</p>
+          <div class="jargon-text">
+            <p style="margin-bottom:14px;"><span class="idea-sentence" id="hiddenIdea">It has been observed by researchers that the <span class="jargon-term">transformation</span> of media consumption patterns, which has been facilitated by digital technologies, has resulted in significant alterations to the mechanisms through which information is disseminated, consumed, and interpreted by various stakeholder groups.</span></p>
+            <p style="margin-bottom:14px;">Furthermore, it should be noted that the <span class="jargon-term">democratization</span> of content creation — a phenomenon that has been widely theorized within the scholarly literature — has engendered a corresponding proliferation of <span class="jargon-term">epistemic fragmentation</span>, whereby the capacity of institutional gatekeepers to adjudicate the veracity of disseminated claims has been substantially attenuated.</p>
+            <p>Consequently, it is incumbent upon stakeholders operating within this transformed informational ecosystem to cultivate the requisite <span class="jargon-term">media literacy competencies</span> necessary to navigate the attendant epistemological challenges that have arisen as a function of these structural shifts.</p>
+          </div>
+          <button class="btn-secondary small-btn" id="revealBtn" onclick="toggleReveal()" style="margin-top:15px;">Reveal Where the Idea Is Hidden</button>
+          <div class="reveal-note" id="revealNote">There it is — highlighted above. It's the exact same idea as the left panel, just wrapped in clauses, passive voice, and jargon that make it hard to spot. Most readers have to decode the sentence two or three times before they can confirm it says what the instructor's overview already told them.</div>
+          <p style="color:var(--orange-light);font-style:italic;margin-top:15px;">"I've read this paragraph five times. I know every individual word, but I can't hold the sentence in my head long enough to find the actual point. By the time I reach the period, I've forgotten how it started."</p>
+        </div>
+      </div>
+    </div>
+    <div class="decision-section">
+      <h3>What do you do?</h3>
+      <div class="decision-options">
+        <button class="decision-btn" onclick="scenario3Choice('reread')">Re-read each sentence slowly, breaking it into smaller pieces yourself</button>
+        <button class="decision-btn" onclick="scenario3Choice('translate')">Paste it into a tool to "translate" it into plain language</button>
+        <button class="decision-btn" onclick="scenario3Choice('skip')">Skip the reading — you're too mentally drained to continue</button>
+      </div>
+    </div>
+    <div id="feedback3" class="feedback-box"><h4>💡 What Just Happened</h4><p id="feedbackText3"></p></div>
+    <div style="text-align:center;margin-top:30px;"><button class="btn-primary" onclick="nextScenario(4)">Continue →</button></div>
+  </div>
+</div>
+
+<!-- Scenario 4 -->
+<div id="scenario4Screen" class="content">
+  <div class="progress-bar"><div class="progress-fill" style="width:100%;"></div></div>
+  <div class="scenario-screen">
+    <div class="scenario-header">
+      <div class="scenario-icon">🖐️</div>
+      <div class="scenario-title"><h2>The Impossible Quiz</h2><p>Motor / Mobility Challenges — Drag-and-drop, tiny targets, strict timers</p></div>
+      <div class="frustration-meter"><div class="frustration-bar" id="frustration4" style="width:0%;">0%</div></div>
+    </div>
+    <div class="split-screen">
+      <div class="panel intended">
+        <div class="panel-label">✓ What the Instructor Intended</div>
+        <div class="panel-content">
+          <div class="quiz-question"><h4>Question 1: Which of the following best describes the impact of digital media?</h4>
+            <div class="quiz-options">
+              <div class="quiz-option">A) Democratization of information</div>
+              <div class="quiz-option">B) Increased misinformation</div>
+              <div class="quiz-option">C) Both A and B</div>
+              <div class="quiz-option">D) Neither A nor B</div>
+            </div>
+          </div>
+          <p style="color:var(--cream);font-size:0.9em;">✓ Clear, readable options. Plenty of time to think.</p>
+        </div>
+      </div>
+      <div class="panel experienced">
+        <div class="panel-label">✗ What the Student Actually Experiences</div>
+        <div class="panel-content">
+          <div class="quiz-question"><h4>Question 1: Which of the following best describes the impact of digital media? <span class="timer warning" id="timer4">0:30</span></h4>
+            <div class="quiz-options">
+              <div class="quiz-option tiny-target">A) Democratization of information</div>
+              <div class="quiz-option tiny-target">B) Increased misinformation</div>
+              <div class="quiz-option tiny-target">C) Both A and B</div>
+              <div class="quiz-option tiny-target">D) Neither A nor B</div>
+            </div>
+          </div>
+          <p style="color:var(--orange-light);font-size:0.9em;">✗ Tiny targets. 30-second timer. My hand tremor makes clicking difficult.</p>
+        </div>
+      </div>
+    </div>
+    <div class="decision-section">
+      <h3>What do you do?</h3>
+      <div class="decision-options">
+        <button class="decision-btn" onclick="scenario4Choice('rush')">Rush through and click whatever you can before time runs out</button>
+        <button class="decision-btn" onclick="scenario4Choice('ask')">Ask for accommodations (extended time, larger targets)</button>
+        <button class="decision-btn" onclick="scenario4Choice('fail')">Give up — this quiz isn't designed for you</button>
+      </div>
+    </div>
+    <div id="feedback4" class="feedback-box"><h4>💡 What Just Happened</h4><p id="feedbackText4"></p></div>
+    <div style="text-align:center;margin-top:30px;"><button class="btn-primary" onclick="showDebrief()">See Your Debrief →</button></div>
+  </div>
+</div>
+
+<!-- Debrief -->
+<div id="debriefScreen" class="content">
+  <div class="debrief-screen">
+    <h2>Reflection & Action</h2>
+    <div class="reflection-prompt"><h3>What You Just Experienced</h3><p>In just a few minutes, you encountered barriers that your students face <span class="emphasis" style="color:var(--orange);">every single day</span>. You felt the frustration, the time pressure, the sense of being excluded from the learning experience. Now imagine feeling this way in every class, every semester.</p></div>
+    <div class="reflection-prompt"><h3>The Good News</h3><p>Most of these barriers are easy to fix. You don't need special software or expensive tools. You just need to think about accessibility from the start—when you design your syllabus, record your lectures, structure your readings, and build your assessments.</p></div>
+    <div class="reflection-prompt"><h3>Reflect on Your Experience</h3><p><strong>Which scenario frustrated you the most?</strong> That's where your students need the most help. <strong>What would have made it easier?</strong> That's your action item.</p></div>
+    <div class="checklist">
+      <h3>🎯 Quick Wins You Can Implement Today</h3>
+      <div class="checklist-item"><input type="checkbox" id="check1"><label for="check1"><strong>Syllabus:</strong> Convert PDFs to accessible Word documents with real text (not scans). Add alt text to any images.</label></div>
+      <div class="checklist-item"><input type="checkbox" id="check2"><label for="check2"><strong>Lectures:</strong> Enable captions on Zoom/Teams, but don't rely on auto-captions alone for critical information (dates, names, terminology). Post exam dates and key facts in writing, too.</label></div>
+      <div class="checklist-item"><input type="checkbox" id="check3"><label for="check3"><strong>Readings:</strong> Favor active voice and short sentences. Define jargon the first time it's used. Break long paragraphs into headings, bullet points, and summaries.</label></div>
+      <div class="checklist-item"><input type="checkbox" id="check4"><label for="check4"><strong>Quizzes:</strong> Avoid drag-and-drop and timed quizzes. Use keyboard-accessible formats. Offer extended time as standard, not as a special accommodation.</label></div>
+      <div class="checklist-item"><input type="checkbox" id="check5"><label for="check5"><strong>General:</strong> Ask your students what they need. Many barriers are invisible. Create a culture where asking for help is normal.</label></div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <button class="btn-primary" onclick="backToIntro()">Start Over</button>
+      <button class="btn-secondary" onclick="downloadChecklist()">Download Checklist</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+let frustrationLevel=0;
+let scenario2Started=false;
+let revealed=false;
+
+function startSimulation(){showScreen('scenario1Screen');frustrationLevel=0;}
+function showScreen(id){document.querySelectorAll('.content').forEach(el=>el.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function backToIntro(){showScreen('introScreen');frustrationLevel=0;scenario2Started=false;}
+function showInstructions(){showScreen('instructionsScreen');}
+function nextScenario(n){showScreen('scenario'+n+'Screen');}
+function showDebrief(){showScreen('debriefScreen');}
+
+function toggleReveal(){
+  const span=document.getElementById('hiddenIdea');
+  const note=document.getElementById('revealNote');
+  const btn=document.getElementById('revealBtn');
+  revealed=!revealed;
+  if(revealed){
+    span.classList.add('revealed');
+    note.classList.add('show');
+    btn.textContent='Hide Highlight';
+  }else{
+    span.classList.remove('revealed');
+    note.classList.remove('show');
+    btn.textContent='Reveal Where the Idea Is Hidden';
+  }
+}
+
+function scenario1Choice(choice){
+  const feedback=document.getElementById('feedback1');const text=document.getElementById('feedbackText1');
+  if(choice==='email'){frustrationLevel+=20;text.innerHTML="You email the professor. They respond in 24 hours with an accessible version. You're relieved, but you've already lost a day of study time. Your classmates without disabilities had this information immediately. <strong>This is why universal design matters.</strong>";}
+  else if(choice==='guess'){frustrationLevel+=50;text.innerHTML="You guess wrong about the grading breakdown. You spend 30 hours on assignments that are only worth 20% of your grade. <strong>Barriers don't just frustrate—they waste time and hurt grades.</strong>";}
+  else{frustrationLevel+=70;text.innerHTML="You drop the course. You lose credits, delay graduation, and miss out on learning. The professor never knows why. <strong>This is how accessibility barriers lead to student attrition.</strong>";}
+  updateFrustration(1);feedback.classList.add('show');
+}
+
+function scenario2Choice(choice){
+  const feedback=document.getElementById('feedback2');const text=document.getElementById('feedbackText2');
+  if(choice==='chat'){frustrationLevel+=30;text.innerHTML="You type into the chat. The professor doesn't see it — she's three slides ahead now. A classmate finally relays your question, and she repeats the dates five minutes later, but you've lost the thread of why they matter. <strong>You spend the rest of class playing catch-up.</strong> This is why live human captioning (CART) matters so much more than auto-generated captions for anything time-sensitive.";}
+  else if(choice==='guess'){frustrationLevel+=60;text.innerHTML="You guess 1450, 1600, and 1650 based on the fragments you caught. All three are wrong. You study the wrong material for your midterm and lose 15 points you didn't need to lose. <strong>Auto-captions didn't just inconvenience you — they cost you a grade.</strong>";}
+  else{frustrationLevel+=75;text.innerHTML="You remember the syllabus from Scenario 1 — the one you couldn't read either. You have nowhere left to turn. <strong>The barriers compound: one inaccessible format leads you straight into another.</strong>";}
+  updateFrustration(2);feedback.classList.add('show');
+}
+
+function scenario3Choice(choice){
+  const feedback=document.getElementById('feedback3');const text=document.getElementById('feedbackText3');
+  if(choice==='reread'){frustrationLevel+=40;text.innerHTML="You break each sentence apart yourself, diagramming the clauses to figure out what connects to what. It takes nearly an hour to get through two paragraphs, and you're mentally exhausted before you've even started the actual assignment. <strong>You're doing the instructor's editing work for them, for free, on your own time.</strong>";}
+  else if(choice==='translate'){frustrationLevel+=25;text.innerHTML="The plain-language version finally makes sense — in about ten seconds flat. But now you're wondering why the plain version wasn't just... the assignment. <strong>If a 'translation' makes it click instantly, the original was an unnecessary barrier, not a rigor requirement.</strong>";}
+  else{frustrationLevel+=65;text.innerHTML="You give up on the reading entirely. You walk into class having absorbed none of the material, not because you didn't try, but because the sentence structure itself defeated you before the ideas ever had a chance. <strong>Dense academic phrasing isn't 'rigor' — for many students, it's simply a wall.</strong>";}
+  updateFrustration(3);feedback.classList.add('show');
+}
+
+function scenario4Choice(choice){
+  const feedback=document.getElementById('feedback4');const text=document.getElementById('feedbackText4');
+  if(choice==='rush'){frustrationLevel+=55;text.innerHTML="You click frantically and get 2 out of 4 questions right. Your score is 50%. Your professor thinks you didn't study. You know the material, but the format failed you. <strong>Assessment should measure knowledge, not motor skills.</strong>";}
+  else if(choice==='ask'){frustrationLevel+=20;text.innerHTML="You ask for accommodations. The professor grants extended time and a larger interface. You get 95%. <strong>This is what accessibility looks like—it levels the playing field.</strong>";}
+  else{frustrationLevel+=75;text.innerHTML="You give up and don't take the quiz. You get a zero. You consider dropping the course. <strong>When students can't access assessments, they can't succeed.</strong>";}
+  updateFrustration(4);feedback.classList.add('show');
+}
+
+function updateFrustration(scenario){
+  const bar=document.getElementById('frustration'+scenario);
+  const percentage=Math.min(frustrationLevel,100);
+  bar.style.width=percentage+'%';bar.textContent=percentage+'%';
+}
+
+function downloadChecklist(){
+  const checklist=`
+THROUGH DIFFERENT EYES — ACCESSIBILITY CHECKLIST
+================================================
+
+Quick Wins You Can Implement Today:
+
+☐ SYLLABUS
+  • Convert PDFs to accessible Word documents with real text (not scans)
+  • Add alt text to any images
+  • Use clear headings and structure
+  • Provide in multiple formats (PDF, Word, HTML)
+
+☐ LECTURES
+  • Enable captions on Zoom/Teams
+  • Don't rely on auto-captions alone for critical info (dates, names, terms)
+  • Post exam dates and key facts in writing, not just verbally
+  • Consider hiring a captioner (CART) for important lectures
+  • Provide lecture notes or transcripts
+  • Record lectures for asynchronous access
+
+☐ READINGS
+  • Favor active voice over passive voice
+  • Define jargon and technical terms the first time they appear
+  • Break long, multi-clause sentences into shorter ones
+  • Use headings, bullet points, and bolded key terms
+  • Provide a plain-language summary alongside dense material
+  • Use accessible fonts (sans-serif, 12pt minimum) and sufficient contrast
+
+☐ QUIZZES & ASSESSMENTS
+  • Avoid drag-and-drop and timed quizzes
+  • Use keyboard-accessible formats
+  • Offer extended time as standard, not as a special accommodation
+  • Provide alternative assessment formats
+  • Test knowledge, not motor skills or processing speed
+
+☐ GENERAL PRACTICES
+  • Ask your students what they need
+  • Create a culture where asking for help is normal
+  • Use universal design principles from the start
+  • Test your materials with accessibility tools
+  • Partner with your disability services office
+  • Remember: accessibility benefits everyone
+
+REMEMBER: Most barriers are easy to fix when you think about them upfront.
+Your students will thank you.
+  `;
+  const element=document.createElement('a');
+  element.setAttribute('href','data:text/plain;charset=utf-8,'+encodeURIComponent(checklist));
+  element.setAttribute('download','Accessibility_Checklist.txt');
+  element.style.display='none';
+  document.body.appendChild(element);element.click();document.body.removeChild(element);
+}
+
+function startTimer(){
+  let seconds=30;const timerEl=document.getElementById('timer4');
+  const interval=setInterval(()=>{seconds--;const mins=Math.floor(seconds/60);const secs=seconds%60;timerEl.textContent=mins+':'+(secs<10?'0':'')+secs;if(seconds<=0)clearInterval(interval);},1000);
+}
+
+function startCaptionSequence(){
+  const intLines=['int2-1','int2-2','int2-3','int2-4'];
+  const capLines=['cap2-1','cap2-2'];
+  intLines.slice(0,2).forEach((id,i)=>{setTimeout(()=>{document.getElementById(id).classList.add('visible');},400+i*1400);});
+  capLines.forEach((id,i)=>{setTimeout(()=>{document.getElementById(id).classList.add('visible');},600+i*1400);});
+  setTimeout(()=>{document.getElementById('int2-3').classList.add('visible');document.getElementById('cap2-3').classList.add('visible');},3400);
+  setTimeout(()=>{const cap3=document.getElementById('cap2-3');cap3.classList.remove('buffering-dots');cap3.classList.add('caption-dropped');cap3.textContent='[0:33] [CAPTIONS UNAVAILABLE — connection lagging]';},6200);
+  setTimeout(()=>{document.getElementById('int2-4').classList.add('visible');},6600);
+  setTimeout(()=>{const cap4=document.getElementById('cap2-4');cap4.classList.add('caption-garbled','visible');cap4.textContent='[0:52] "today will explore how digital media is having a stricken lee disruptive a fact on modern institutions"';},8200);
+  setTimeout(()=>{document.getElementById('cap2-callout').classList.add('show');},9000);
+}
+
+const observer=new MutationObserver(()=>{
+  if(document.getElementById('scenario4Screen').classList.contains('active')){startTimer();}
+  if(document.getElementById('scenario2Screen').classList.contains('active') && !scenario2Started){scenario2Started=true;startCaptionSequence();}
+});
+observer.observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
+</script>
+</body>
+</html>
