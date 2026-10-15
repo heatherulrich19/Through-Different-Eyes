@@ -74,7 +74,7 @@
         <div class="split-panel">
           <p class="panel-label">What the Instructor Intended</p>
           <div class="panel-content">
-            <p class="reading-label" style="font-weight:600; margin-bottom:0.5rem;">Syllabus.pdf — Page 1</p>
+            <p class="reading-label">Syllabus.pdf — Page 1</p>
             <h3>Course Overview</h3>
             <p>This course explores the history of digital media and its impact on society. Students will analyze primary sources, engage in critical discussions, and produce original research.</p>
             <h3>Textbook</h3>
@@ -93,7 +93,7 @@
         <div class="split-panel">
           <p class="panel-label">What the Student Experiences</p>
           <div class="panel-content">
-            <div class="syllabus-content blur-effect">
+            <div class="blur-effect">
               <h3>Course Overview</h3>
               <p>This course explores the history of digital media and its impact on society. Students will analyze primary sources, engage in critical discussions, and produce original research.</p>
               <h3>Textbook</h3>
@@ -173,7 +173,7 @@
             <div class="caption-line caption-garbled" id="cap2-2">
               [0:17] "this democracitized knowledge and fundamentally challenged existing <span class="caption-fail">uh</span> political power structures"
             </div>
-            <div class="caption-line caption-buffering buffering-dots" id="cap2-3">[0:33] buffering</div>
+            <div class="caption-line buffering-dots" id="cap2-3">[0:33] buffering</div>
             <div class="caption-line" id="cap2-4"></div>
           </div>
           <div class="caption-callout" id="cap2-callout">
@@ -416,15 +416,7 @@
 </footer>
 
 <script>
-  function goTo(id) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    const target = document.getElementById(id);
-    if (target) {
-      target.classList.add('active');
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-    if (id === 'screen-s4') startTimer();
-  }
+
 
   const feedback = {
     s1: {
