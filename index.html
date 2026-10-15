@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Through Different Eyes — Interactive Faculty Development Activity</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     SCREEN 0 — HERO / LANDING
+     ============================================================ -->
+<section id="screen-hero" class="screen active">
+  <div class="hero">
+    <p class="eyebrow">Interactive Faculty Development Activity</p>
+    <h1 class="hero-title">Through Different Eyes</h1>
+    <p class="hero-sub">
+      Step into the experience of a student navigating your course materials —
+      but <span class="accent">through the lens of a disability</span>. You'll
+      encounter real scenarios where common instructional choices create invisible
+      barriers. Each scenario takes <span class="accent">3–5 minutes</span> and
+      ends with actionable fixes you can apply today.
+    </p>
+    <button class="btn-primary" onclick="goTo('screen-intro')">Begin the Simulation →</button>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCREEN — INTRO / FRAMING
+     ============================================================ -->
+<section id="screen-intro" class="screen">
+  <div class="panel-narrow">
+    <h2>Before You Begin</h2>
+    <p>
+      You'll move through four scenarios, each from the perspective of a student
+      encountering a different kind of barrier. On the left, you'll see what the
+      instructor intended. On the right, you'll see what the student actually
+      experiences.
+    </p>
+    <p>
+      At each decision point, choose how the student responds. There's no "win" —
+      only different costs. A <strong>frustration meter</strong> will track the
+      emotional and cognitive toll as barriers compound across the simulation.
+    </p>
+    <p>
+      At the end of each scenario, you'll get a concrete <strong>UDL Tip</strong> —
+      a specific, implementable fix tied to a Universal Design for Learning
+      principle.
+    </p>
+    <button class="btn-primary btn-continue" onclick="goTo('screen-s1')">Start Scenario 1 →</button>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCENARIO 1 — THE UNREADABLE SYLLABUS (Low Vision / Blindness)
+     ============================================================ -->
+<section id="screen-s1" class="screen">
+  <div class="scenario-header">
+    <p class="scenario-tag">Scenario 1 of 4 · Low Vision / Blindness</p>
+    <h2>👁️ The Unreadable Syllabus</h2>
+  </div>
+
+  <div class="frustration-meter-wrap">
+    <span class="meter-label">Frustration Level</span>
+    <div class="meter-track"><div class="meter-fill" id="meter-1" style="width:15%;"></div></div>
+  </div>
+
+  <div class="instruction-banner">
+    It's the first day. Your professor posted the syllabus to the course site.
+    You open it using your screen reader.
+  </div>
+
+  <div class="split-screen">
+    <div class="split-panel">
+      <p class="panel-label">What the Instructor Intended</p>
+      <div class="panel-content">
+        <p class="reading-label">Syllabus.pdf — Page 1</p>
+        <ul>
+          <li>Course objectives &amp; weekly schedule</li>
+          <li>Grading breakdown (chart)</li>
+          <li>Office hours &amp; contact info</li>
+          <li>Required textbook (cover image)</li>
+        </ul>
+        <p>A clean, scanned copy of last year's printed syllabus — quick to post, looks familiar.</p>
+      </div>
+    </div>
+    <div class="split-panel">
+      <p class="panel-label">What the Student Experiences</p>
+      <div class="panel-content">
+        <div class="scanned-doc">
+          <div class="scan-noise"></div>
+          <span class="scan-caption">[ image — no alt text ]</span>
+        </div>
+        <p class="screen-reader-output">🔊 "Image. Image. Image. Page 1 of 4."</p>
+        <p>The screen reader cannot extract any text — the entire document is a scanned
+        image. There is no way to know what the grading breakdown says, when office
+        hours are, or what the textbook is, without seeing the picture.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <p class="decision-prompt">What does the student do?</p>
+    <button class="btn-option" onclick="chooseOption('s1','A')">A. Ask a classmate to read the whole syllabus aloud over the phone</button>
+    <button class="btn-option" onclick="chooseOption('s1','B')">B. Email the professor explaining the document isn't accessible and ask for a text version</button>
+    <button class="btn-option" onclick="chooseOption('s1','C')">C. Skip it and try to piece together the course expectations from the first lecture</button>
+    <div id="feedback-s1" class="feedback-box hidden"></div>
+  </div>
+
+  <div id="udltip-s1" class="udl-tip hidden">
+    <p class="udl-label">
+      <span class="principle-tag" style="background:var(--orange-dark); color:var(--bg); padding:3px 10px; border-radius:999px; font-size:11px; margin-right:8px;">REPRESENTATION</span>
+      UDL Tip
+    </p>
+    <p>Export documents as real text, not scanned images — a quick way to check is
+    trying to highlight text in the PDF. Add alt text to all images and charts.
+    Use built-in heading styles (not just bold/bigger font) so screen readers can
+    navigate the structure.</p>
+  </div>
+
+  <button class="btn-primary btn-continue hidden" id="next-s1" onclick="goTo('screen-s2')">Continue to Scenario 2 →</button>
+</section>
+
+<!-- ============================================================
+     SCENARIO 2 — THE SILENT LECTURE (Deaf / Hard of Hearing)
+     ============================================================ -->
+<section id="screen-s2" class="screen">
+  <div class="scenario-header">
+    <p class="scenario-tag">Scenario 2 of 4 · Deaf / Hard of Hearing</p>
+    <h2>🦻 The Silent Lecture</h2>
+  </div>
+
+  <div class="frustration-meter-wrap">
+    <span class="meter-label">Frustration Level</span>
+    <div class="meter-track"><div class="meter-fill" id="meter-2" style="width:30%;"></div></div>
+  </div>
+
+  <div class="instruction-banner">
+    Today's lecture was recorded and posted online. You missed class and need to
+    catch up before the quiz.
+  </div>
+
+  <div class="split-screen">
+    <div class="split-panel">
+      <p class="panel-label">What the Instructor Intended</p>
+      <div class="panel-content transcript">
+        <p>A 40-minute recorded lecture covering three key theories, with examples
+        and a short Q&amp;A at the end. "Auto-captions are on, so it should be
+        accessible," the professor figured.</p>
+      </div>
+    </div>
+    <div class="split-panel">
+      <p class="panel-label">What the Student Experiences</p>
+      <div class="panel-content caption-buffer">
+        <p class="caption-line">"...the key <span class="caption-fail">fiery</span> of this chapter is..."</p>
+        <p class="caption-line">"...which relates to <span class="caption-fail">Plato's cave</span> — wait, <span class="caption-fail">play dose gave</span>..."</p>
+        <p class="caption-line buffering">[captions buffering...]</p>
+        <p class="caption-line">"...on the exam, make sure you <span class="caption-fail">[inaudible]</span>."
+          <span class="late-tag">⚠ Critical exam detail lost</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <p class="decision-prompt">What does the student do?</p>
+    <button class="btn-option" onclick="chooseOption('s2','A')">A. Watch it three more times, pausing constantly to guess at garbled words</button>
+    <button class="btn-option" onclick="chooseOption('s2','B')">B. Email the professor requesting corrected captions or a transcript before the quiz</button>
+    <button class="btn-option" onclick="chooseOption('s2','C')">C. Give up and hope the quiz doesn't cover that section</button>
+    <div id="feedback-s2" class="feedback-box hidden"></div>
+  </div>
+
+  <div id="udltip-s2" class="udl-tip hidden">
+    <p class="udl-label">
+      <span class="principle-tag" style="background:var(--orange-dark); color:var(--bg); padding:3px 10px; border-radius:999px; font-size:11px; margin-right:8px;">REPRESENTATION</span>
+      UDL Tip
+    </p>
+    <p>Auto-captions are a starting point, not a finish line — budget time to review
+    and correct them, especially for names, dates, and technical terms. Post
+    critical info (exam dates, assignment details) in writing on the syllabus or
+    LMS, never spoken-only.</p>
+  </div>
+
+  <button class="btn-primary btn-continue hidden" id="next-s2" onclick="goTo('screen-s3')">Continue to Scenario 3 →</button>
+</section>
+
+<!-- ============================================================
+     SCENARIO 3 — THE COGNITIVE OVERLOAD (Dyslexia / Cognitive)
+     ============================================================ -->
+<section id="screen-s3" class="screen">
+  <div class="scenario-header">
+    <p class="scenario-tag">Scenario 3 of 4 · Dyslexia / Cognitive</p>
+    <h2>🧠 The Cognitive Overload</h2>
+  </div>
+
+  <div class="frustration-meter-wrap">
+    <span class="meter-label">Frustration Level</span>
+    <div class="meter-track"><div class="meter-fill" id="meter-3" style="width:45%;"></div></div>
+  </div>
+
+  <div class="instruction-banner">
+    You're assigned Chapter 7 — eighteen pages, due before tomorrow's discussion.
+  </div>
+
+  <div class="split-screen">
+    <div class="split-panel">
+      <p class="panel-label">What the Instructor Intended</p>
+      <div class="panel-content">
+        <p>"They just need to read the chapter and come ready to discuss the main
+        argument," the professor figured — the way they'd read it in grad school.</p>
+      </div>
+    </div>
+    <div class="split-panel">
+      <p class="panel-label">What the Student Experiences</p>
+      <div class="panel-content dense-text">
+        <p>Notwithstanding the aforementioned <span class="jargon">epistemological
+        framework</span>, which — as previously theorized by scholars operating
+        within the broader <span class="jargon">post-structuralist</span>
+        tradition — necessarily complicates any attempt to reconcile the
+        <span class="jargon">hegemonic</span> discourse with its ostensibly
+        counter-hegemonic alternatives, one must nevertheless interrogate the
+        underlying assumptions that render such a reconciliation both
+        theoretically untenable and practically unattainable within the confines
+        of the current pedagogical paradigm.</p>
+        <p>No heading. No summary. No defined terms. Eighteen more pages exactly like this.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <p class="decision-prompt">What does the student do?</p>
+    <button class="btn-option" onclick="chooseOption('s3','A')">A. Push through alone — re-reading each sentence, breaking apart clauses, holding it all in working memory</button>
+    <button class="btn-option" onclick="chooseOption('s3','B')">B. Email the professor asking for a plain-language summary or key-term definitions</button>
+    <button class="btn-option" onclick="chooseOption('s3','C')">C. Skip the reading entirely</button>
+    <div id="feedback-s3" class="feedback-box hidden"></div>
+  </div>
+
+  <div id="udltip-s3" class="udl-tip hidden">
+    <p class="udl-label">
+      <span class="principle-tag" style="background:var(--orange-dark); color:var(--bg); padding:3px 10px; border-radius:999px; font-size:11px; margin-right:8px;">REPRESENTATION</span>
+      UDL Tip
+    </p>
+    <p>A reading guide helps students know what to focus on — but it's not enough
+    on its own if the terminology is unfamiliar or the text is dense. Pair it with
+    a glossary of new terms, and when assigning a full chapter, point students to
+    the specific pages or sections that matter most rather than leaving them to
+    guess.</p>
+  </div>
+
+  <button class="btn-primary btn-continue hidden" id="next-s3" onclick="goTo('screen-s4')">Continue to Scenario 4 →</button>
+</section>
+
+<!-- ============================================================
+     SCENARIO 4 — THE IMPOSSIBLE QUIZ (Motor / Mobility)
+     ============================================================ -->
+<section id="screen-s4" class="screen">
+  <div class="scenario-header">
+    <p class="scenario-tag">Scenario 4 of 4 · Motor / Mobility</p>
+    <h2>🖐️ The Impossible Quiz</h2>
+  </div>
+
+  <div class="frustration-meter-wrap">
+    <span class="meter-label">Frustration Level</span>
+    <div class="meter-track"><div class="meter-fill" id="meter-4" style="width:60%;"></div></div>
+  </div>
+
+  <div class="instruction-banner">
+    A timed quiz just opened. You have limited fine motor control and use a
+    switch device instead of a mouse.
+  </div>
+
+  <div class="timer-box">
+    <span>⏱ Time Remaining</span>
+    <span id="timer-display">00:45</span>
+  </div>
+
+  <div class="split-screen">
+    <div class="split-panel">
+      <p class="panel-label">What the Instructor Intended</p>
+      <div class="panel-content">
+        <p>A quick, engaging drag-and-drop matching quiz — match each term to its
+        definition by dragging small cards into place, timed to keep students
+        focused and prevent looking things up.</p>
+      </div>
+    </div>
+    <div class="split-panel">
+      <p class="panel-label">What the Student Experiences</p>
+      <div class="panel-content">
+        <p>Tiny draggable targets, placed close together, with no keyboard
+        alternative:</p>
+        <div class="tiny-targets">
+          <span class="tiny-card">A</span><span class="tiny-card">B</span>
+          <span class="tiny-card">C</span><span class="tiny-card">D</span>
+        </div>
+        <p>Each drag attempt requires precise, sustained cursor control. Missed
+        drags don't just fail — they cost time the strict timer won't give back.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <p class="decision-prompt">What does the student do?</p>
+    <button class="btn-option" onclick="chooseOption('s4','A')">A. Attempt the drags repeatedly, burning the clock on motor control instead of content</button>
+    <button class="btn-option" onclick="chooseOption('s4','B')">B. Message the professor mid-quiz asking for extended time or an alternate format</button>
+    <button class="btn-option" onclick="chooseOption('s4','C')">C. Submit incomplete when the timer runs out</button>
+    <div id="feedback-s4" class="feedback-box hidden"></div>
+  </div>
+
+  <div id="udltip-s4" class="udl-tip hidden">
+    <p class="udl-label">
+      <span class="principle-tag" style="background:var(--orange-dark); color:var(--bg); padding:3px 10px; border-radius:999px; font-size:11px; margin-right:8px;">ACTION &amp; EXPRESSION</span>
+      UDL Tip
+    </p>
+    <p>Offer a non-drag-and-drop alternative for the same question (e.g.,
+    dropdowns or multiple choice), and build in generous target sizes, spacing,
+    and flexible timing. Most institutional LMS platforms are WCAG 2.1 AA
+    compliant — using your LMS's native quiz/exam tools (rather than embedded
+    third-party widgets or PDFs) will often give students an accessible format
+    automatically.</p>
+  </div>
+
+  <button class="btn-primary btn-continue hidden" id="next-s4" onclick="goTo('screen-debrief')">Continue to Debrief →</button>
+</section>
+
+<!-- ============================================================
+     DEBRIEF
+     ============================================================ -->
+<section id="screen-debrief" class="screen">
+  <div class="panel-narrow">
+    <h2>Debrief &amp; Reflection</h2>
+
+    <div class="frustration-meter-wrap" style="margin-bottom:30px;">
+      <span class="meter-label">Final Frustration Level</span>
+      <div class="meter-track"><div class="meter-fill" id="meter-final" style="width:75%;"></div></div>
+    </div>
+
+    <h3>Reflection Prompts</h3>
+    <div class="reflection-prompt">Which scenario felt most familiar to a barrier you may have unintentionally created in your own course?</div>
+    <div class="reflection-prompt">Did you notice yourself choosing the "advocate" option less often as frustration increased? What does that suggest about the real cost of self-advocacy?</div>
+    <div class="reflection-prompt">What's one thing you can fix in your course this week — not next semester?</div>
+
+    <h3>Quick-Start Checklist</h3>
+    <ul class="checklist">
+      <li><label><input type="checkbox"> Run my syllabus/PDFs through a text-select or screen-reader check</label></li>
+      <li><label><input type="checkbox"> Add alt text to images, charts, and scanned figures</label></li>
+      <li><label><input type="checkbox"> Review and correct auto-captions before posting recorded lectures</label></li>
+      <li><label><input type="checkbox"> Post critical dates/details in writing, not spoken-only</label></li>
+      <li><label><input type="checkbox"> Add a glossary or reading guide to dense chapters</label></li>
+      <li><label><input type="checkbox"> Offer a non-drag-and-drop alternative on interactive quizzes</label></li>
+      <li><label><input type="checkbox"> Use native LMS quiz tools instead of third-party embeds where possible</label></li>
+      <li><label><input type="checkbox"> Build in flexible timing by default, not as a special request</label></li>
+    </ul>
+
+    <h3>The Missing Guideline</h3>
+    <p>
+      Every UDL Tip in this simulation pointed to <em>Representation</em> or
+      <em>Action &amp; Expression</em>. The third guideline for Universal Design for Learning, <em>Engagement</em>, was the principle that this whole simulation was build around.
+    </p>
+    <p>
+      Every time a student had to decide whether to push through alone, send their instructor an email, or just give up, they were spending energy that should've gone toward learning on other tasks just to catch up to their peers.
+    </p>
+    <p>
+      &quotUDL is based on principles that empower everyone to have agency over their own learning. It allows educators and learners to set clear goals, anticipate environmental barriers, create meaningful options, and fully embrace human variability.&quot
+      (<a href="https://www.cast.org/what-we-do/universal-design-for-learning/?_gl=1*gs3tej*_gcl_au*Njk2NTQzMTE4LjE3OTIwMjI0MzE." target="_blank" rel="noopener">CAST Universal Design for Learning</a>)
+    </p>
+
+    <button class="btn-primary btn-continue" onclick="window.print()">Download / Print This Checklist</button>
+  </div>
+
+  <footer class="site-footer">
+    <p><strong>Through Different Eyes</strong> by Heather Ulrich and Alana Weinberg is licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.
+    </p>
+    <p>
+      <a href="https://github.com/heatherulrich19/Through-Different-Eyes" target="_blank" rel="noopener">Download or Remix →</a>
+    </p>
+  </footer>
+</section>
+
+<script>
+  function goTo(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    if (id === 'screen-s4') startTimer();
+  }
+
+  const feedback = {
+    s1: {
+      A: "The classmate agrees, but only has 10 minutes before their own class. The student gets a rushed, partial read-through — missing the grading breakdown entirely.",
+      B: "The professor is surprised but responsive, sending a plain-text version within the hour. The student loses a day of prep time they didn't have to lose — and the fix was five minutes of the professor's time, not a new skill to learn.",
+      C: "The student shows up to the first lecture without knowing the grading policy, textbook, or office hours — and spends the whole class feeling behind before it's even started."
+    },
+    s2: {
+      A: "After three replays and dozens of pauses, the student has a patchwork understanding — and has spent four times longer than any other student on the same lecture.",
+      B: "The professor didn't realize the auto-captions were that unreliable and posts a corrected transcript before the quiz — but the student spent the afternoon drafting a careful, diplomatic email instead of studying.",
+      C: "The quiz includes the exact detail lost in the garbled captions. The student misses the question — not from lack of effort, but from a caption error."
+    },
+    s3: {
+      A: "The student finishes the chapter, but it takes nearly three hours instead of forty-five minutes — re-reading, breaking apart sentences, holding fragments in memory. No one will ever know this cost anything.",
+      B: "The professor sends back a short glossary and a one-sentence plain-language recap. The student still had to spend emotional labor and time to get access to something that could have been built into the reading from the start.",
+      C: "The student arrives at discussion without having completed the reading — not from avoidance, but because the sentence structure itself was the barrier, not the ideas inside it."
+    },
+    s4: {
+      A: "The timer runs out mid-drag. The student answered zero questions correctly — not because they didn't know the content, but because they couldn't physically execute the interaction fast enough.",
+      B: "The professor grants extra time, but only after the student has already lost several precious minutes composing a mid-quiz message and waiting anxiously for a reply.",
+      C: "The quiz auto-submits with half the questions blank. The grade will reflect motor control, not comprehension."
+    }
+  };
+
+  function chooseOption(scenario, option) {
+    const fb = document.getElementById('feedback-' + scenario);
+    fb.innerHTML = "<strong>What happens:</strong> " + feedback[scenario][option];
+    fb.classList.remove('hidden');
+    document.getElementById('udltip-' + scenario).classList.remove('hidden');
+    document.getElementById('next-' + scenario).classList.remove('hidden');
+    document.querySelectorAll('#screen-' + scenario + ' .btn-option').forEach(b => b.disabled = true);
+  }
+
+  let timerInterval;
+  function startTimer() {
+    clearInterval(timerInterval);
+    let seconds = 45;
+    const display = document.getElementById('timer-display');
+    timerInterval = setInterval(() => {
+      seconds--;
+      const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+      const s = String(seconds % 60).padStart(2, '0');
+      display.textContent = m + ":" + s;
+      if (seconds <= 0) clearInterval(timerInterval);
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>
