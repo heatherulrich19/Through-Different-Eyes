@@ -6,14 +6,16 @@
     --surface-border: #3d3833;
     --text: #ede8e1;
     --text-muted: #b3aba0;
+    --text-light: #fff;
     --accent: #e5935c;
     --accent-hover: #f1a572;
     --accent-dark: #8c4c23;
     --fail: #f26d6d;
     --fail-bg: rgba(242, 109, 109, 0.12);
-    --success: #62c48e;
     --font-serif: "Newsreader", "Charter", "Georgia", serif;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --accent-bg-light: rgba(229, 147, 92, 0.15);
+    
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -48,7 +50,7 @@
     }
     .tagline{
       font-size:1.05em;
-      color:var(--gray-text);
+      color:var(--text-muted);
       max-width:600px;
       margin:0 auto 1rem;
       line-height:1.6;
@@ -111,19 +113,14 @@
       font-size: 1.05rem;
     }
 
-    p.lead {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-    }
     a {
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
     }
 
-    .a:hover {
-      text-decoration: underline;!important
+    a:hover {
+      text-decoration: underline;
     }
     .accent {
       color: var(--accent);
@@ -210,12 +207,6 @@
           opacity:.6;
         }
 
-      .scan-caption {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        font-style: italic;
-      }
-
       .screen-reader-output {
         background: #000;
         border: 1px solid #444;
@@ -301,20 +292,9 @@
       color:var(--accent);
       cursor:help;}
 
-    .late-tag {
-      display: inline-block;
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
     .dense-text {
       line-height: 1.75;
       font-size: 0.92rem;
-    }
-
-    .jargon {
-      text-decoration: underline dotted var(--accent);
     }
 
     .tiny-targets {
@@ -384,9 +364,9 @@
     }
 
     .btn-option.active {
-      background: rgba(229, 147, 92, 0.15);
+      background: var(--accent-bg-light);
       border-color: var(--accent);
-      color: #fff;
+      color: var(--text-light);
       font-weight: 500;
       box-shadow: 0 0 0 1px var(--accent);
     }
@@ -394,7 +374,7 @@
     .btn-primary {
       display: inline-block;
       background: var(--accent);
-      color: #141312;
+      var(--bg);
       font-weight: 600;
       border: none;
       border-radius: 8px;
