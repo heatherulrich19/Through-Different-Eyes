@@ -5,6 +5,91 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Through Different Eyes — Interactive Faculty Development Activity</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* Quick inline overrides for clarity */
+  .panel-content {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .panel-label {
+    font-family: Georgia, serif;
+  }
+  .frustration-meter-wrap {
+    margin-bottom: 2rem;
+  }
+  .btn-option {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.75rem;
+    padding: 1rem;
+    text-align: left;
+    background: var(--bg-light, #2a2a2a);
+    color: var(--text, #e8e8e8);
+    border: 2px solid var(--orange, #d4a574);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  .btn-option:hover {
+    background: var(--orange, #d4a574);
+    color: var(--bg, #1a1a1a);
+  }
+  .btn-option.active {
+    background: var(--orange, #d4a574);
+    color: var(--bg, #1a1a1a);
+    font-weight: 600;
+  }
+  .btn-option:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .feedback-box {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(212, 165, 116, 0.1);
+    border-left: 4px solid var(--orange, #d4a574);
+    border-radius: 4px;
+    line-height: 1.6;
+  }
+  .feedback-box.hidden {
+    display: none;
+  }
+  .caption-line {
+    margin: 0.75rem 0;
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeInCaption 0.6s ease forwards;
+  }
+  .caption-line:nth-child(1) { animation-delay: 0.1s; }
+  .caption-line:nth-child(2) { animation-delay: 0.4s; }
+  .caption-line:nth-child(3) { animation-delay: 0.7s; }
+  .caption-line:nth-child(4) { animation-delay: 1s; }
+  @keyframes fadeInCaption {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .caption-fail {
+    color: #ff6b6b;
+    font-weight: 600;
+  }
+  .late-tag {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .buffering {
+    font-style: italic;
+    opacity: 0.7;
+  }
+</style>
 </head>
 <body>
 
@@ -40,7 +125,7 @@
     </p>
     <p>
       At each decision point, choose how the student responds. There's no "win" —
-      only different costs. A <strong>frustration meter</strong> will track the
+      only different costs. Click any option to see what happens. A <strong>frustration meter</strong> will track the
       emotional and cognitive toll as barriers compound across the simulation.
     </p>
     <p>
@@ -156,9 +241,7 @@
         <p class="caption-line">"...the key <span class="caption-fail">fiery</span> of this chapter is..."</p>
         <p class="caption-line">"...which relates to <span class="caption-fail">Plato's cave</span> — wait, <span class="caption-fail">play dose gave</span>..."</p>
         <p class="caption-line buffering">[captions buffering...]</p>
-        <p class="caption-line">"...on the exam, make sure you <span class="caption-fail">[inaudible]</span>."
-          <span class="late-tag">⚠ Critical exam detail lost</span>
-        </p>
+        <p class="caption-line">"...on the exam, make sure you <span class="caption-fail">[inaudible]</span>." <span class="late-tag">⚠ Critical exam detail lost</span></p>
       </div>
     </div>
   </div>
@@ -352,17 +435,24 @@
       <li><label><input type="checkbox"> Build in flexible timing by default, not as a special request</label></li>
     </ul>
 
-    <h3>The Missing Guideline</h3>
+    <h3>One Thing You Probably Noticed — But We Didn't Label</h3>
     <p>
       Every UDL Tip in this simulation pointed to <em>Representation</em> or
-      <em>Action &amp; Expression</em>. The third guideline for Universal Design for Learning, <em>Engagement</em>, was the principle that this whole simulation was build around.
+      <em>Action &amp; Expression</em>. That wasn't an accident, but it wasn't
+      the whole story either.
     </p>
     <p>
-      Every time a student had to decide whether to push through alone, send their instructor an email, or just give up, they were spending energy that should've gone toward learning on other tasks just to catch up to their peers.
+      The frustration meter climbing with each scenario? That's <em>Engagement</em>
+      — and honestly, it's the principle this whole activity is actually about.
+      Every time a student had to decide whether to push through alone, send
+      that email, or just give up, they were spending energy that should've gone
+      toward learning — not surviving the format.
     </p>
     <p>
-      &quotUDL is based on principles that empower everyone to have agency over their own learning. It allows educators and learners to set clear goals, anticipate environmental barriers, create meaningful options, and fully embrace human variability.&quot
-      (<a href="https://www.cast.org/what-we-do/universal-design-for-learning/?_gl=1*gs3tej*_gcl_au*Njk2NTQzMTE4LjE3OTIwMjI0MzE." target="_blank" rel="noopener">CAST Universal Design for Learning</a>)
+      Fixing the document is the easy part. Reducing the hesitation before a
+      student hits "send" on an accommodation request — that's harder, and it
+      starts before you ever open your syllabus template.
+      (<a href="https://udlguidelines.cast.org" target="_blank" rel="noopener">CAST UDL Guidelines</a>)
     </p>
 
     <button class="btn-primary btn-continue" onclick="window.print()">Download / Print This Checklist</button>
@@ -373,7 +463,7 @@
       <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.
     </p>
     <p>
-      <a href="https://github.com/heatherulrich19/Through-Different-Eyes" target="_blank" rel="noopener">Download or Remix →</a>
+      <a href="https://github.com/your-repo/through-different-eyes" target="_blank" rel="noopener">Download or Remix →</a>
     </p>
   </footer>
 </section>
@@ -413,9 +503,16 @@
     const fb = document.getElementById('feedback-' + scenario);
     fb.innerHTML = "<strong>What happens:</strong> " + feedback[scenario][option];
     fb.classList.remove('hidden');
+    
+    // Highlight the clicked button
+    document.querySelectorAll('#screen-' + scenario + ' .btn-option').forEach(b => {
+      b.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // Show UDL tip and next button
     document.getElementById('udltip-' + scenario).classList.remove('hidden');
     document.getElementById('next-' + scenario).classList.remove('hidden');
-    document.querySelectorAll('#screen-' + scenario + ' .btn-option').forEach(b => b.disabled = true);
   }
 
   let timerInterval;
