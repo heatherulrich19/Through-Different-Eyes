@@ -126,7 +126,10 @@
       color: var(--accent);
       font-weight: 600;
     }
-
+    .reading-label {
+      font-weight:600; 
+      margin-bottom:0.5rem;
+    }
 
 
     .scenario-tag {
