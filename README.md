@@ -20,6 +20,7 @@ Designed for use in faculty development workshops, new faculty orientation, depa
 This project was **vibe-coded** collaboratively using **BoodleBox**, leveraging:
 - The **frontend-design skill** to generate and iteratively refine the interactive HTML/CSS/JavaScript experience
 - **Claude Sonnet** for content development, scenario writing, and instructional language
+- **Human input** for refinement, debugging, and UX polish
 
 Design direction, concept, scenario content, and revisions were driven by Heather Ulrich and Alana Weinberg through iterative feedback — the AI tooling assisted in implementation, not ideation.
 
