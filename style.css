@@ -1,0 +1,438 @@
+/* =========================================================
+   Through Different Eyes — Stylesheet
+   ========================================================= */
+
+:root {
+  --bg: #1c1712;
+  --bg-soft: #241d17;
+  --cream: #f4e4c8;
+  --orange: #e8a23d;
+  --orange-dark: #c9842a;
+  --gray-text: #b9b0a4;
+  --border-soft: rgba(244, 228, 200, 0.12);
+  --green: #6fae72;
+  --red: #c96a5f;
+  --radius: 14px;
+  --radius-pill: 999px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #1c1712 0%, #15110d 100%);
+  color: var(--gray-text);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.6;
+}
+
+/* ---------- Screen / Section Management ---------- */
+.screen {
+  display: none;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  min-height: 70vh;
+}
+.screen.active { display: block; }
+
+/* ---------- Hero / Landing ---------- */
+.hero { text-align: center; }
+
+.eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--orange);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 64px;
+  color: var(--cream);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 32px;
+}
+
+.hero-sub {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  color: var(--gray-text);
+  max-width: 680px;
+  margin: 0 auto 40px;
+}
+
+.accent { color: var(--orange); font-weight: 700; }
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: var(--orange);
+  color: #1c1712;
+  border: none;
+  padding: 18px 36px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--orange-dark);
+  transform: translateY(-2px);
+}
+
+.btn-continue { display: block; margin: 40px auto 0; }
+
+.btn-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--bg-soft);
+  color: var(--cream);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.btn-option:hover {
+  border-color: var(--orange);
+  background: #2a2219;
+}
+
+.btn-reveal {
+  margin-top: 18px;
+  background: transparent;
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn-reveal:hover { background: var(--orange); color: #1c1712; }
+
+/* ---------- Panels / Intro / Debrief ---------- */
+.panel-narrow {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.panel-narrow h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--cream);
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.panel-narrow h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--cream);
+  font-size: 22px;
+  margin-top: 32px;
+}
+.panel-narrow p { font-size: 16px; }
+
+/* ---------- Scenario Header ---------- */
+.scenario-header { text-align: center; margin-bottom: 36px; }
+.scenario-header h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--cream);
+  font-size: 34px;
+  margin: 10px 0 6px;
+}
+.scenario-tag {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--gray-text);
+  margin-bottom: 24px;
+}
+
+.instruction-banner {
+  background: var(--bg-soft);
+  border-left: 4px solid var(--orange);
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+/* ---------- Frustration Meter ---------- */
+.frustration-meter-wrap {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.meter-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray-text);
+  display: block;
+  margin-bottom: 8px;
+}
+.meter-track {
+  background: var(--bg-soft);
+  border-radius: var(--radius-pill);
+  height: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+}
+.meter-fill {
+  background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+/* ---------- Split Screen ---------- */
+.split-screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+@media (max-width: 760px) {
+  .split-screen { grid-template-columns: 1fr; }
+}
+
+.split-panel {
+  background: var(--bg-soft);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.panel-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--orange);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.panel-content { font-size: 15px; }
+.panel-content ul { padding-left: 20px; }
+
+.reading-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/* ---------- Scenario 1: Scanned Doc ---------- */
+.scanned-doc {
+  background: #0d0b08;
+  border: 1px dashed var(--border-soft);
+  border-radius: 8px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.scan-noise {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.02) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+.scan-caption {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  color: var(--gray-text);
+  font-style: italic;
+  z-index: 1;
+}
+.screen-reader-output {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--orange);
+  background: #0d0b08;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+/* ---------- Scenario 2: Captions ---------- */
+.transcript p { margin-bottom: 14px; }
+.caption-line {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--gray-text);
+}
+.caption-buffer .buffering { color: var(--orange); font-style: italic; }
+.caption-fail { color: var(--red); font-weight: 600; }
+.late-tag {
+  font-size: 12px;
+  color: var(--red);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ---------- Scenario 3: Dense Text ---------- */
+.dense-text {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--gray-text);
+}
+.jargon {
+  border-bottom: 2px dotted var(--orange);
+  color: var(--cream);
+}
+.reveal-note {
+  margin-top: 16px;
+  padding: 16px;
+  background: #0d0b08;
+  border-left: 4px solid var(--orange);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--cream);
+}
+
+/* ---------- Scenario 4: Quiz ---------- */
+.timer-box {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #0d0b08;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: var(--red);
+}
+.tiny-targets {
+  display: flex;
+  gap: 6px;
+  margin: 14px 0;
+}
+.tiny-card {
+  background: var(--orange);
+  color: #1c1712;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* ---------- Shared Text Treatments ---------- */
+.first-person-quote {
+  margin-top: 16px;
+  font-style: italic;
+  color: var(--cream);
+  border-top: 1px solid var(--border-soft);
+  padding-top: 14px;
+  font-size: 14.5px;
+}
+
+/* ---------- Decision Block ---------- */
+.decision-block { margin-bottom: 28px; }
+.decision-prompt {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+.feedback-box {
+  background: var(--bg-soft);
+  border: 1px solid var(--orange);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--cream);
+}
+.feedback-box.hidden { display: none; }
+.hidden { display: none; }
+
+/* ---------- UDL Tip ---------- */
+.udl-tip {
+  background: linear-gradient(135deg, rgba(232,162,61,0.12), rgba(232,162,61,0.04));
+  border: 1px solid var(--orange);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.udl-label {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--orange);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.udl-tip p {
+  font-size: 15px;
+  color: var(--cream);
+  margin: 0;
+}
+
+/* ---------- Debrief ---------- */
+.reflection-prompt {
+  background: var(--bg-soft);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+.checklist {
+  list-style: none;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+}
+.checklist li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+.checklist input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: var(--orange);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12.5px;
+  color: var(--gray-text);
+  padding: 30px 20px 40px;
+  border-top: 1px solid var(--border-soft);
+  margin-top: 20px;
+}
+.site-footer a {
+  color: var(--orange);
+  text-decoration: none;
+}
+.site-footer a:hover { text-decoration: underline; }
