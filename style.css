@@ -59,8 +59,9 @@
   /* Main Container & Screens */
     .container {
       width: 100%;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 5rem 5rem;
+      padding: 0 1rem 3rem;
     }
     .instruction {
       max-width:900px;
