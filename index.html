@@ -18,209 +18,198 @@
   <!-- ============================================================
        SCREEN 0 — HERO / LANDING
        ============================================================ -->
-        <div class="instruction">
-        <section id="screen-hero" class="screen active">
-          <div class="panel-narrow" style="text-align: center;">
-            <p>In the next few minutes, you'll experience what it's like to be a student encountering <span class="accent">accessibility barriers</span> when engaging with course activites and materials.</p>
-            <p>Each scenario shows you two perspectives: what the instructor intended to create, and what a student with a disability actually experiences.</p>
-            <p>Pay attention to your frustration level. This is what some students feel every day.</p>
-            <button class="btn-primary" onclick="goTo('screen-intro')">Begin the Simulation →</button>
-          </div>
-        </section>
+  <div class="instruction">
+    <section id="screen-hero" class="screen active">
+      <div class="panel-narrow" style="text-align: center;">
+        <p>In the next few minutes, you'll experience what it's like to be a student encountering <span class="accent">accessibility barriers</span> when engaging with course activities and materials.</p>
+        <p>Each scenario shows you two perspectives: what the instructor intended to create, and what a student with a disability actually experiences.</p>
+        <p>Pay attention to the choices students are forced to make. This is what some students feel every day.</p>
+        <button class="btn-primary" onclick="goTo('screen-intro')">Begin the Simulation →</button>
+      </div>
+    </section>
+  </div>
 
   <!-- ============================================================
        SCREEN — INTRO / FRAMING (Mandatory Before Sim 1)
        ============================================================ -->
-      <section id="screen-intro" class="screen">
-        <div class="panel-narrow">
-          <p class="eyebrow">Orientation</p>
-          <h2>Before You Begin</h2>
-          <p>
-            You'll move through four scenarios, each from the perspective of a student
-            encountering a different kind of barrier. On the left, you'll see what the
-            instructor intended. On the right, you'll see what the student actually
-            experiences.
-          </p>
-          <p>
-            At each decision point, choose how the student responds. There's no "win" —
-            only different costs. A <strong>frustration meter</strong> will track the
-            emotional and cognitive toll as barriers compound across the simulation.
-          </p>
-          <p>
-            At the end of each scenario, you'll get a concrete <strong>UDL Tip</strong> —
-            a specific, implementable fix tied to a Universal Design for Learning
-            principle.
-          </p>
-          <button class="btn-primary btn-continue" onclick="goTo('screen-s1')">Start Scenario 1 →</button>
-        </div>
-      </section>
+  <section id="screen-intro" class="screen">
+    <button type="button" class="btn-back" onclick="goBack()" aria-label="Go back to the previous screen">← Back</button>
+
+    <div class="panel-narrow">
+      <p class="eyebrow">Orientation</p>
+      <h2>Before You Begin</h2>
+      <p>
+        You'll move through four scenarios, each from the perspective of a student
+        encountering a different kind of barrier. On the left, you'll see what the
+        instructor intended. On the right, you'll see what the student actually
+        experiences.
+      </p>
+      <p>
+        At each decision point, choose how the student responds. There's no "win" —
+        only different costs and trade-offs.
+      </p>
+      <p>
+        At the end of each scenario, you'll get a concrete <strong>UDL Tip</strong> —
+        a specific, implementable fix tied to a Universal Design for Learning
+        principle.
+      </p>
+      <button class="btn-primary btn-continue" onclick="goTo('screen-s1')">Start Scenario 1 →</button>
     </div>
+  </section>
 
   <!-- ============================================================
        SCENARIO 1 — THE UNREADABLE SYLLABUS (Low Vision / Blindness)
        ============================================================ -->
-    <section id="screen-s1" class="screen">
-      <div class="scenario-header">
-        <p class="scenario-tag">Scenario 1 of 4 · Low Vision / Blindness</p>
-        <h2>👁️ The Unreadable Syllabus</h2>
-      </div>
+  <section id="screen-s1" class="screen">
+    <button type="button" class="btn-back" onclick="goBack()" aria-label="Go back to the previous screen">← Back</button>
 
-      <div class="instruction-banner">
-        It's the first day. Your professor posted the syllabus to the course site.
-        You open it using your screen reader.
-      </div>
+    <div class="scenario-header">
+      <p class="scenario-tag">Scenario 1 of 4 · Low Vision / Blindness</p>
+      <h2>👁️ The Unreadable Syllabus</h2>
+    </div>
 
-      <div class="split-screen">
-        <div class="split-panel">
-          <p class="panel-label">What the Instructor Intended</p>
-          <div class="panel-content">
-            <p class="reading-label">Syllabus.pdf — Page 1</p>
+    <div class="instruction-banner">
+      It's the first day. Your professor posted the syllabus to the course site.
+      You open it using your screen reader.
+    </div>
+
+    <div class="split-screen">
+      <div class="split-panel">
+        <p class="panel-label">What the Instructor Intended</p>
+        <div class="panel-content">
+          <p class="reading-label">Syllabus.pdf — Page 1</p>
+          <h3>Course Overview</h3>
+          <p>This course explores the history of digital media and its impact on society. Students will analyze primary sources, engage in critical discussions, and produce original research.</p>
+          <h3>Textbook</h3>
+          <p>
+            <img src="https://images.unsplash.com/photo-1771778403262-c76572576352?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="" height="150px;"><br>
+            Photo by <a href="https://unsplash.com/@nenadkaevik?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nenad Kaevik</a> on <a href="https://unsplash.com/photos/the-intelligent-investor-book-with-a-cup-of-espresso-jVr_W3fC5bM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+          </p>
+          <h3>Learning Outcomes</h3>
+          <p>By the end of this course, you will be able to:</p>
+          <ul style="margin-left:20px;">
+            <li>Analyze media critically</li>
+            <li>Conduct original research</li>
+            <li>Present findings effectively</li>
+          </ul>
+          <h3>Grading</h3>
+          <p>Participation: 20% | Assignments: 40% | Final Project: 40%</p>
+        </div>
+      </div>
+      <div class="split-panel">
+        <p class="panel-label">What the Student Experiences</p>
+        <div class="panel-content">
+          <div class="blur-effect">
             <h3>Course Overview</h3>
             <p>This course explores the history of digital media and its impact on society. Students will analyze primary sources, engage in critical discussions, and produce original research.</p>
             <h3>Textbook</h3>
-            <p><img src="https://images.unsplash.com/photo-1771778403262-c76572576352?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="" height="150px;"><br>Photo by <a href="https://unsplash.com/@nenadkaevik?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nenad Kaevik</a> on <a href="https://unsplash.com/photos/the-intelligent-investor-book-with-a-cup-of-espresso-jVr_W3fC5bM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-            <h3>Learning Outcomes</h3>
-            <p>By the end of this course, you will be able to:</p>
-            <ul style="margin-left:20px;">
-                <li>Analyze media critically</li>
-                <li>Conduct original research</li>
-                <li>Present findings effectively</li>
-              </ul>
-            <h3>Grading</h3>
-            <p>Participation: 20% | Assignments: 40% | Final Project: 40%</p>
+            <p>
+              <img src="https://images.unsplash.com/photo-1771778403262-c76572576352?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="" height="150px;"><br>
+              Photo by <a href="https://unsplash.com/@nenadkaevik?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nenad Kaevik</a> on <a href="https://unsplash.com/photos/the-intelligent-investor-book-with-a-cup-of-espresso-jVr_W3fC5bM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            </p>
           </div>
-        </div>
-        <div class="split-panel">
-          <p class="panel-label">What the Student Experiences</p>
-          <div class="panel-content">
-            <div class="blur-effect">
-              <h3>Course Overview</h3>
-              <p>This course explores the history of digital media and its impact on society. Students will analyze primary sources, engage in critical discussions, and produce original research.</p>
-              <h3>Textbook</h3>
-              <p><img src="https://images.unsplash.com/photo-1771778403262-c76572576352?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="" height="150px;"><br>Photo by <a href="https://unsplash.com/@nenadkaevik?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nenad Kaevik</a> on <a href="https://unsplash.com/photos/the-intelligent-investor-book-with-a-cup-of-espresso-jVr_W3fC5bM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-              </p>
-            </div>
-            <p class="screen-reader-output">🔊 "Image. Image. Image. Page 1 of 4."</p>
-            <div class="udl-tip"><p>The screen reader cannot extract any text because the entire document has no tags and is a scanned image. There is no way to know what the grading breakdown says, when office hours are, or what the textbook is, without seeing the picture.</p></div>
+          <p class="screen-reader-output">🔊 "Image. Image. Image. Page 1 of 4."</p>
+          <div class="udl-tip">
+            <p>The screen reader cannot extract any text because the entire document has no tags and is a scanned image. There is no way to know what the grading breakdown says, when office hours are, or what the textbook is, without seeing the picture.</p>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="decision-block">
-        <p class="decision-prompt">What does the student do?</p>
+    <div class="decision-block">
+      <p class="decision-prompt">If you were the student, what would you do?</p>
 
-        <!-- FRUSTRATION METER ABOVE ANSWERS -->
-        <div id="meter-box-s1" class="frustration-meter-wrap hidden">
-          <div class="meter-header">
-            <span>Student Frustration Level</span>
-            <span id="meter-val-s1">0%</span>
-          </div>
-          <div class="meter-track">
-            <div class="meter-fill" id="meter-fill-s1"></div>
-          </div>
-          <div class="meter-status" id="meter-status-s1"></div>
-        </div>
+      <button class="btn-option" onclick="chooseOption('s1','A')">A. Email the professor asking for an accessible version</button>
+      <button class="btn-option" onclick="chooseOption('s1','B')">B. Try to guess what the syllabus says and hope for the best</button>
+      <button class="btn-option" onclick="chooseOption('s1','C')">C. Drop the course — it's too much hassle</button>
+      
+      <div id="feedback-s1" class="feedback-box hidden"></div>
+    </div>
 
-        <button class="btn-option" onclick="chooseOption('s1','A')">A. Email the professor asking for an accessible version</button>
-        <button class="btn-option" onclick="chooseOption('s1','B')">B. Try to guess what the syllabus says and hope for the best</button>
-        <button class="btn-option" onclick="chooseOption('s1','C')">C. Drop the course — it's too much hassle</button>
-        
-        <div id="feedback-s1" class="feedback-box hidden"></div>
-      </div>
+    <!-- UDL Tip -->
+    <div id="udltip-s1" class="udl-tip hidden">
+      <p class="udl-label">
+        <span class="principle-tag">REPRESENTATION</span>
+        UDL TIP
+      </p>
+      <p>Export documents as real text, not scanned images — a quick way to check is trying to highlight text in the PDF. Add alt text to all images and charts. Use built-in heading styles (not just bold/bigger font) so screen readers can navigate the structure.</p>
+    </div>
 
-      <!-- UDL Tip -->
-      <div id="udltip-s1" class="udl-tip hidden">
-        <p class="udl-label">
-          <span class="principle-tag">REPRESENTATION</span>
-          UDL TIP
-        </p>
-        <p>Export documents as real text, not scanned images — a quick way to check is trying to highlight text in the PDF. Add alt text to all images and charts. Use built-in heading styles (not just bold/bigger font) so screen readers can navigate the structure.</p>
-      </div>
-
-      <button class="btn-primary btn-continue hidden" id="next-s1" onclick="goTo('screen-s2')">Continue to Scenario 2 →</button>
-    </section>
+    <button class="btn-primary btn-continue hidden" id="next-s1" onclick="goTo('screen-s2')">Continue to Scenario 2 →</button>
+  </section>
 
   <!-- ============================================================
        SCENARIO 2 — THE SILENT LECTURE (Deaf / Hard of Hearing)
        ============================================================ -->
-    <section id="screen-s2" class="screen">
-      <div class="scenario-header">
-        <p class="scenario-tag">Scenario 2 of 4 · Deaf / Hard of Hearing</p>
-        <h2>🦻 The Silent Lecture</h2>
-      </div>
+  <section id="screen-s2" class="screen">
+    <button type="button" class="btn-back" onclick="goBack()" aria-label="Go back to the previous screen">← Back</button>
 
-      <div class="instruction-banner">
-        Today's lecture was recorded and posted online. You missed class and need to
-        catch up before the quiz.
-      </div>
+    <div class="scenario-header">
+      <p class="scenario-tag">Scenario 2 of 4 · Deaf / Hard of Hearing</p>
+      <h2>🦻 The Silent Lecture</h2>
+    </div>
 
-      <div class="split-screen">
-        <div class="split-panel">
-          <p class="panel-label">What the Instructor Intended</p>
-          <div class="panel-content">
-            <div class="caption-line" id="int2-1"><strong>[0:00]</strong> "The printing press, invented by Gutenberg around 1440, revolutionized information distribution across Europe."</div>
-            <div class="caption-line" id="int2-2"><strong>[0:16]</strong> "This democratized knowledge and fundamentally challenged existing ecclesiastical and political power structures."</div>
-            <div class="caption-line" id="int2-3"><strong>[0:33]</strong> "For your midterm, remember these three key dates: 1440, 1517, and 1536."</div>
-            <div class="caption-line" id="int2-4"><strong>[0:52]</strong> "Today we'll explore how digital media is having a strikingly similar disruptive effect on modern institutions."</div>
-          </div>
+    <div class="instruction-banner">
+      Today's lecture was recorded and posted online. You missed class and need to
+      catch up before the quiz.
+    </div>
+
+    <div class="split-screen">
+      <div class="split-panel">
+        <p class="panel-label">What the Instructor Intended</p>
+        <div class="panel-content">
+          <div class="caption-line" id="int2-1"><strong>[0:00]</strong> "The printing press, invented by Gutenberg around 1440, revolutionized information distribution across Europe."</div>
+          <div class="caption-line" id="int2-2"><strong>[0:16]</strong> "This democratized knowledge and fundamentally challenged existing ecclesiastical and political power structures."</div>
+          <div class="caption-line" id="int2-3"><strong>[0:33]</strong> "For your midterm, remember these three key dates: 1440, 1517, and 1536."</div>
+          <div class="caption-line" id="int2-4"><strong>[0:52]</strong> "Today we'll explore how digital media is having a strikingly similar disruptive effect on modern institutions."</div>
         </div>
-        <div class="split-panel">
-          <p class="panel-label">What the Student Experiences</p>
-          <div class="panel-content">
-            <div class="caption-line caption-garbled" id="cap2-1">
-              [0:00] "the printing press invented by <span class="caption-fail">good enberg</span> around fourteen-forty revolutionized information distribution across Europe"
-            </div>
-            <div class="caption-line caption-garbled" id="cap2-2">
-              [0:17] "this democracitized knowledge and fundamentally challenged existing <span class="caption-fail">uh</span> political power structures"
-            </div>
-            <div class="caption-line buffering-dots" id="cap2-3">[0:33] buffering</div>
-            <div class="caption-line" id="cap2-4"></div>
+      </div>
+      <div class="split-panel">
+        <p class="panel-label">What the Student Experiences</p>
+        <div class="panel-content">
+          <div class="caption-line caption-garbled" id="cap2-1">
+            [0:00] "the printing press invented by <span class="caption-fail">good enberg</span> around fourteen-forty revolutionized information distribution across Europe"
           </div>
+          <div class="caption-line caption-garbled" id="cap2-2">
+            [0:17] "this democracitized knowledge and fundamentally challenged existing <span class="caption-fail">uh</span> political power structures"
+          </div>
+          <div class="caption-line buffering-dots" id="cap2-3">[0:33] buffering</div>
+          <div class="caption-line" id="cap2-4"></div>
           <div class="caption-callout" id="cap2-callout">
             The exam dates were never captioned. By the time the system caught up, the professor had already moved to the next slide.
           </div>
         </div>
-        </div>
       </div>
+    </div>
 
-      <div class="decision-block">
-        <p class="decision-prompt">What does the student do?</p>
+    <div class="decision-block">
+      <p class="decision-prompt">If you were the student, what would you do?</p>
 
-        <!-- FRUSTRATION METER ABOVE ANSWERS -->
-        <div id="meter-box-s2" class="frustration-meter-wrap hidden">
-          <div class="meter-header">
-            <span>Student Frustration Level</span>
-            <span id="meter-val-s2">0%</span>
-          </div>
-          <div class="meter-track">
-            <div class="meter-fill" id="meter-fill-s2"></div>
-          </div>
-          <div class="meter-status" id="meter-status-s2"></div>
-        </div>
+      <button class="btn-option" onclick="chooseOption('s2','A')">A. Watch it three more times, pausing constantly to guess at garbled words</button>
+      <button class="btn-option" onclick="chooseOption('s2','B')">B. Email the professor requesting corrected captions or a transcript before the quiz</button>
+      <button class="btn-option" onclick="chooseOption('s2','C')">C. Give up and hope the quiz doesn't cover that section</button>
+      
+      <div id="feedback-s2" class="feedback-box hidden"></div>
+    </div>
 
-        <button class="btn-option" onclick="chooseOption('s2','A')">A. Watch it three more times, pausing constantly to guess at garbled words</button>
-        <button class="btn-option" onclick="chooseOption('s2','B')">B. Email the professor requesting corrected captions or a transcript before the quiz</button>
-        <button class="btn-option" onclick="chooseOption('s2','C')">C. Give up and hope the quiz doesn't cover that section</button>
-        
-        <div id="feedback-s2" class="feedback-box hidden"></div>
-      </div>
+    <!-- UDL Tip -->
+    <div id="udltip-s2" class="udl-tip hidden">
+      <p class="udl-label">
+        <span class="principle-tag">REPRESENTATION</span>
+        UDL TIP
+      </p>
+      <p>Auto-captions are a starting point, not a finish line — budget time to review and correct them, especially for names, dates, and technical terms. Post critical info (exam dates, assignment details) in writing on the syllabus or LMS, never spoken-only.</p>
+    </div>
 
-      <!-- UDL Tip -->
-      <div id="udltip-s2" class="udl-tip hidden">
-        <p class="udl-label">
-          <span class="principle-tag">REPRESENTATION</span>
-          UDL TIP
-        </p>
-        <p>Auto-captions are a starting point, not a finish line — budget time to review and correct them, especially for names, dates, and technical terms. Post critical info (exam dates, assignment details) in writing on the syllabus or LMS, never spoken-only.</p>
-      </div>
-
-      <button class="btn-primary btn-continue hidden" id="next-s2" onclick="goTo('screen-s3')">Continue to Scenario 3 →</button>
-    </section>
+    <button class="btn-primary btn-continue hidden" id="next-s2" onclick="goTo('screen-s3')">Continue to Scenario 3 →</button>
+  </section>
 
   <!-- ============================================================
        SCENARIO 3 — THE COGNITIVE OVERLOAD (Dyslexia / Cognitive)
        ============================================================ -->
   <section id="screen-s3" class="screen">
+    <button type="button" class="btn-back" onclick="goBack()" aria-label="Go back to the previous screen">← Back</button>
+
     <div class="scenario-header">
       <p class="scenario-tag">Scenario 3 of 4 · Dyslexia / Cognitive</p>
       <h2>🧠 The Cognitive Overload</h2>
@@ -237,25 +226,15 @@
         <p class="panel-label">What the Student Experiences</p>
         <div class="panel-content dense-text">
           <p>Notwithstanding the aforementioned <span class="jargon">epistemological framework</span>, which — as previously theorized by scholars operating within the broader <span class="jargon">post-structuralist</span> tradition — necessarily complicates any attempt to reconcile the <span class="jargon">hegemonic</span> discourse with its ostensibly counter-hegemonic alternatives...</p>
-          <div class="udl-tip"><p>No headings. No summary. No defined terms. Eighteen more pages exactly like this.</p>
+          <div class="udl-tip">
+            <p>No headings. No summary. No defined terms. Eighteen more pages exactly like this.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-    <div class="decision-block">
-      <p class="decision-prompt">What does the student do?</p>
 
-      <!-- FRUSTRATION METER ABOVE ANSWERS -->
-      <div id="meter-box-s3" class="frustration-meter-wrap hidden">
-        <div class="meter-header">
-          <span>Student Frustration Level</span>
-          <span id="meter-val-s3">0%</span>
-        </div>
-        <div class="meter-track">
-          <div class="meter-fill" id="meter-fill-s3"></div>
-        </div>
-        <div class="meter-status" id="meter-status-s3"></div>
-      </div>
+    <div class="decision-block">
+      <p class="decision-prompt">If you were the student, what would you do?</p>
 
       <button class="btn-option" onclick="chooseOption('s3','A')">A. Re-read each sentence slowly, breaking it into smaller pieces yourself</button>
       <button class="btn-option" onclick="chooseOption('s3','B')">B. Paste it into a tool to "translate" it into plain language</button>
@@ -280,6 +259,8 @@
        SCENARIO 4 — THE IMPOSSIBLE QUIZ (Motor / Mobility)
        ============================================================ -->
   <section id="screen-s4" class="screen">
+    <button type="button" class="btn-back" onclick="goBack()" aria-label="Go back to the previous screen">← Back</button>
+
     <div class="scenario-header">
       <p class="scenario-tag">Scenario 4 of 4 · Motor / Mobility</p>
       <h2>🖐️ The Impossible Quiz</h2>
@@ -309,25 +290,15 @@
             <span class="tiny-card">A</span><span class="tiny-card">B</span>
             <span class="tiny-card">C</span><span class="tiny-card">D</span>
           </div>
-          <div class="udl-tip"><p>Each drag attempt requires precise, sustained cursor control. Missed drags don't just fail — they cost time the strict timer won't give back.</p></div>
+          <div class="udl-tip">
+            <p>Each drag attempt requires precise, sustained cursor control. Missed drags don't just fail — they cost time the strict timer won't give back.</p>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="decision-block">
-      <p class="decision-prompt">What does the student do?</p>
-
-      <!-- FRUSTRATION METER ABOVE ANSWERS -->
-      <div id="meter-box-s4" class="frustration-meter-wrap hidden">
-        <div class="meter-header">
-          <span>Student Frustration Level</span>
-          <span id="meter-val-s4">0%</span>
-        </div>
-        <div class="meter-track">
-          <div class="meter-fill" id="meter-fill-s4"></div>
-        </div>
-        <div class="meter-status" id="meter-status-s4"></div>
-      </div>
+      <p class="decision-prompt">If you were the student, what would you do?</p>
 
       <button class="btn-option" onclick="chooseOption('s4','A')">A. Attempt the drags repeatedly, burning the clock on motor control instead of content</button>
       <button class="btn-option" onclick="chooseOption('s4','B')">B. Message the professor mid-quiz asking for extended time or an alternate format</button>
@@ -352,10 +323,12 @@
        DEBRIEF & CHECKLIST SCREEN
        ============================================================ -->
   <section id="screen-debrief" class="screen">
+    <button type="button" class="btn-back" onclick="goBack()" aria-label="Go back to the previous screen">← Back</button>
+
     <div class="panel-narrow">
       <h2>Debrief &amp; Reflection</h2>
 
-      <!-- One Thing You Probably Noticed (Placed BEFORE Reflection Prompts) -->
+      <!-- One Thing You Probably Noticed -->
       <div style="background: var(--surface-raised); border: 1px solid var(--surface-border); border-radius: 8px; padding: 1.5rem; margin: 1.75rem 0;">
         <h3 style="margin-top: 0; color: var(--accent);">One Thing You Probably Noticed — But We Didn't Label</h3>
         <p>
@@ -364,7 +337,7 @@
           the whole story either.
         </p>
         <p>
-          The frustration meter climbing with each scenario? That's <em>Engagement</em>
+          Notice the mental and emotional toll of navigating each barrier? That's <em>Engagement</em>
           — and honestly, it's the principle this whole activity is actually about.
           Every time a student had to decide whether to push through alone, send
           that email, or just give up, they were spending energy that should've gone
@@ -380,7 +353,7 @@
 
       <h3>Reflection Prompts</h3>
       <div class="reflection-prompt">Which scenario felt most familiar to a barrier you may have unintentionally created in your own course?</div>
-      <div class="reflection-prompt">Did you notice yourself choosing the "advocate" option less often as frustration increased? What does that suggest about the real cost of self-advocacy?</div>
+      <div class="reflection-prompt">Did you notice yourself choosing the "advocate" option less often across scenarios? What does that suggest about the real cost of self-advocacy?</div>
       <div class="reflection-prompt">What's one thing you can fix in your course this week — not next semester?</div>
 
       <h3>Quick-Start Accessibility Checklist</h3>
@@ -402,7 +375,7 @@
 </main>
 
 <!-- ============================================================
-     UPDATED SITE FOOTER
+     SITE FOOTER
      ============================================================ -->
 <footer class="site-footer">
   <p>
@@ -416,51 +389,26 @@
 </footer>
 
 <script>
-
-
   const feedback = {
     s1: {
-      A: "You email the professor. They respond in 24 hours with an accessible version. You're relieved, but you've already lost a day of study time. Your classmates without disabilities had this information immediately. <strong>This is why universal design matters.",
+      A: "You email the professor. They respond in 24 hours with an accessible version. You're relieved, but you've already lost a day of study time. Your classmates without disabilities had this information immediately. <strong>This is why universal design matters.</strong>",
       B: "You guess wrong about the grading breakdown. You spend 30 hours on assignments that are only worth 20% of your grade. <strong>Barriers don't just frustrate—they waste time and hurt grades.</strong>",
       C: "You drop the course. You lose credits, delay graduation, and miss out on learning. The professor never knows why. <strong>This is how accessibility barriers lead to student attrition.</strong>"
     },
     s2: {
       A: "You type into the chat. The professor doesn't see it — she's three slides ahead now. A classmate finally relays your question, and she repeats the dates five minutes later, but you've lost the thread of why they matter. <strong>You spend the rest of class playing catch-up.</strong> This is why live human captioning (CART) matters so much more than auto-generated captions for anything time-sensitive.",
-      B: "The plain-language version finally makes sense — in about ten seconds flat. But now you're wondering why the plain version wasn't just... the assignment. <strong>If a 'translation' makes it click instantly, the original was an unnecessary barrier, not a rigor requirement.</strong>",
-      C: "You give up on the reading entirely. You walk into class having absorbed none of the material, not because you didn't try, but because the sentence structure itself defeated you before the ideas ever had a chance. <strong>Dense academic phrasing isn't 'rigor' — for many students, it's simply a wall.</strong>"
+      B: "You email the professor requesting corrected captions or a transcript before the quiz. While you wait for a response, study time slips away. <strong>Self-advocacy creates extra friction when materials aren't accessible upfront.</strong>",
+      C: "You give up and hope the quiz doesn't cover that section. You lose points on the key dates. <strong>When access is missing, grades suffer.</strong>"
     },
     s3: {
       A: "You break each sentence apart yourself, diagramming the clauses to figure out what connects to what. It takes nearly an hour to get through two paragraphs, and you're mentally exhausted before you've even started the actual assignment. <strong>You're doing the instructor's editing work for them, for free, on your own time.</strong>",
-      B: "The professor sends back a short glossary and a one-sentence plain-language recap. The student still had to spend emotional labor and time to get access to something that could have been built into the reading from the start.",
-      C: "The student arrives at discussion without having completed the reading — not from avoidance, but because the sentence structure itself was the barrier, not the ideas inside it."
+      B: "The plain-language version finally makes sense — in about ten seconds flat. But now you're wondering why the plain version wasn't just... the assignment. <strong>If a 'translation' makes it click instantly, the original was an unnecessary barrier, not a rigor requirement.</strong>",
+      C: "You give up on the reading entirely. You walk into class having absorbed none of the material, not because you didn't try, but because the sentence structure itself defeated you before the ideas ever had a chance. <strong>Dense academic phrasing isn't 'rigor' — for many students, it's simply a wall.</strong>"
     },
     s4: {
       A: "The timer runs out mid-drag. You frantically clicked and answered zero questions correctly — not because you didn't know the content, but because you couldn't physically execute the interaction fast enough. <strong>Assessment should measure knowledge, not motor skills.</strong>",
       B: "You ask for accommodations. The professor reschedules the exam, grants extended time and a larger interface. You get 95%. <strong>This is what accessibility looks like—it levels the playing field.</strong>",
       C: "You give up and let the timer run out. You get a zero. You consider dropping the course. <strong>When students can't access assessments, they can't succeed.</strong>"
-    }
-  };
-
-  const frustrationData = {
-    s1: {
-      A: { percent: 25, label: "Toll: Cognitive fatigue & dependency on peers." },
-      B: { percent: 15, label: "Toll: Lost prep time & self-advocacy friction." },
-      C: { percent: 35, label: "Toll: Disorientation & anxiety on Day 1." }
-    },
-    s2: {
-      A: { percent: 55, label: "Toll: 4x study time spent deciphering bad captions." },
-      B: { percent: 40, label: "Toll: Hours spent drafting diplomatic emails rather than studying." },
-      C: { percent: 65, label: "Toll: Academic penalty caused by unedited captions." }
-    },
-    s3: {
-      A: { percent: 80, label: "Toll: Exhaustion from hours of parsing dense, unguided prose." },
-      B: { percent: 65, label: "Toll: Vulnerability tax of asking for plain-language assistance." },
-      C: { percent: 85, label: "Toll: Disengagement & shame arriving unprepared." }
-    },
-    s4: {
-      A: { percent: 95, label: "Toll: Complete loss of points due to physical interface barrier." },
-      B: { percent: 80, label: "Toll: Panic and high-stress mid-quiz accommodation scramble." },
-      C: { percent: 100, label: "Toll: Severe frustration; grade reflects motor control, not knowledge." }
     }
   };
 
@@ -475,20 +423,8 @@
       b.classList.remove('active');
     });
     event.currentTarget.classList.add('active');
-    
-    // 3. Update Frustration Meter (RESETS PER SCENARIO)
-    const meterBox = document.getElementById('meter-box-' + scenario);
-    const meterVal = document.getElementById('meter-val-' + scenario);
-    const meterFill = document.getElementById('meter-fill-' + scenario);
-    const meterStatus = document.getElementById('meter-status-' + scenario);
-    
-    const data = frustrationData[scenario][option];
-    meterBox.classList.remove('hidden');
-    meterVal.textContent = data.percent + "%";
-    meterFill.style.width = data.percent + "%";
-    meterStatus.textContent = data.label;
 
-    // 4. Reveal UDL Tip & Next Button
+    // 3. Reveal UDL Tip & Next Button
     document.getElementById('udltip-' + scenario).classList.remove('hidden');
     document.getElementById('next-' + scenario).classList.remove('hidden');
   }
@@ -507,132 +443,149 @@
     }, 1000);
   }
 
-  //Captions//
-    let scenario2Started = false;
+  // Captions Sequence
+  let scenario2Started = false;
 
-    function startCaptionSequence() {
-      // 1. Reveal instructor lines and initial garbled student lines
-      const intLines = ['int2-1', 'int2-2', 'int2-3', 'int2-4'];
-      const capLines = ['cap2-1', 'cap2-2'];
+  function startCaptionSequence() {
+    const intLines = ['int2-1', 'int2-2', 'int2-3', 'int2-4'];
+    const capLines = ['cap2-1', 'cap2-2'];
 
-      intLines.slice(0, 2).forEach((id, i) => {
-        setTimeout(() => { document.getElementById(id)?.classList.add('visible'); }, 400 + i * 1400);
-      });
+    intLines.slice(0, 2).forEach((id, i) => {
+      setTimeout(() => { document.getElementById(id)?.classList.add('visible'); }, 400 + i * 1400);
+    });
 
-      capLines.forEach((id, i) => {
-        setTimeout(() => { document.getElementById(id)?.classList.add('visible'); }, 600 + i * 1400);
-      });
+    capLines.forEach((id, i) => {
+      setTimeout(() => { document.getElementById(id)?.classList.add('visible'); }, 600 + i * 1400);
+    });
 
-      // 2. Show instructor [0:33] while student line shows "buffering"
-      setTimeout(() => {
-        document.getElementById('int2-3')?.classList.add('visible');
-        document.getElementById('cap2-3')?.classList.add('visible');
-      }, 3400);
+    setTimeout(() => {
+      document.getElementById('int2-3')?.classList.add('visible');
+      document.getElementById('cap2-3')?.classList.add('visible');
+    }, 3400);
 
-      // 3. Switch buffering to connection dropped alert
-      setTimeout(() => {
-        const cap3 = document.getElementById('cap2-3');
-        if (cap3) {
-          cap3.classList.remove('buffering-dots');
-          cap3.classList.add('caption-dropped');
-          cap3.textContent = '[0:33] [CAPTIONS UNAVAILABLE — connection lagging]';
-        }
-      }, 6200);
+    setTimeout(() => {
+      const cap3 = document.getElementById('cap2-3');
+      if (cap3) {
+        cap3.classList.remove('buffering-dots');
+        cap3.classList.add('caption-dropped');
+        cap3.textContent = '[0:33] [CAPTIONS UNAVAILABLE — connection lagging]';
+      }
+    }, 6200);
 
-      // 4. Reveal instructor [0:52] and garbled student catch-up
-      setTimeout(() => {
-        document.getElementById('int2-4')?.classList.add('visible');
-      }, 6600);
+    setTimeout(() => {
+      document.getElementById('int2-4')?.classList.add('visible');
+    }, 6600);
 
-      setTimeout(() => {
-        const cap4 = document.getElementById('cap2-4');
-        if (cap4) {
-          cap4.classList.add('caption-garbled', 'visible');
-          cap4.innerHTML = '[0:52] "today will explore how digital media is having a <span class="caption-fail">stricken lee</span> disruptive a fact on modern institutions"';
-        }
-      }, 8200);
+    setTimeout(() => {
+      const cap4 = document.getElementById('cap2-4');
+      if (cap4) {
+        cap4.classList.add('caption-garbled', 'visible');
+        cap4.innerHTML = '[0:52] "today will explore how digital media is having a <span class="caption-fail">stricken lee</span> disruptive a fact on modern institutions"';
+      }
+    }, 8200);
 
-      // 5. Reveal the callout note
-      setTimeout(() => {
-        document.getElementById('cap2-callout')?.classList.add('show');
-      }, 9000);
+    setTimeout(() => {
+      document.getElementById('cap2-callout')?.classList.add('show');
+    }, 9000);
+  }
+
+  // Navigation Logic with History API Support
+  function showScreen(id) {
+    clearInterval(timerInterval); // Stop quiz timer if navigating away
+
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Update goTo function:
-    function goTo(id) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      const target = document.getElementById(id);
-      if (target) {
-        target.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      // Trigger scenario animations
-      if (id === 'screen-s2' && !scenario2Started) {
-        scenario2Started = true;
-        startCaptionSequence();
-      }
-      if (id === 'screen-s4') {
-        startTimer();
-      }
+    if (id === 'screen-s2' && !scenario2Started) {
+      scenario2Started = true;
+      startCaptionSequence();
     }
-
-
-    //Download checklist//
-      function downloadChecklist(){
-      const checklist=`
-      THROUGH DIFFERENT EYES — ACCESSIBILITY CHECKLIST
-      ================================================
-
-      Quick Wins You Can Implement Today:
-
-      ☐ SYLLABUS
-        • Convert PDFs to accessible Word documents with real text (not scans)
-        • Add alt text to any images
-        • Use clear headings and structure
-        • Provide in multiple formats (PDF, Word, HTML)
-
-      ☐ LECTURES
-        • Enable captions on Zoom/Teams
-        • Don't rely on auto-captions alone for critical info (dates, names, terms)
-        • Post exam dates and key facts in writing, not just verbally
-        • Consider hiring a captioner (CART) for important lectures
-        • Provide lecture notes or transcripts
-        • Record lectures for asynchronous access
-
-      ☐ READINGS
-        • Favor active voice over passive voice
-        • Define jargon and technical terms the first time they appear
-        • Break long, multi-clause sentences into shorter ones
-        • Use headings, bullet points, and bolded key terms
-        • Provide a plain-language summary alongside dense material
-        • Use accessible fonts (sans-serif, 12pt minimum) and sufficient contrast
-
-      ☐ QUIZZES & ASSESSMENTS
-        • Avoid drag-and-drop and timed quizzes
-        • Use keyboard-accessible formats
-        • Offer extended time as standard, not as a special accommodation
-        • Provide alternative assessment formats
-        • Test knowledge, not motor skills or processing speed
-
-      ☐ GENERAL PRACTICES
-        • Ask your students what they need
-        • Create a culture where asking for help is normal
-        • Use universal design principles from the start
-        • Test your materials with accessibility tools
-        • Partner with your disability services office
-        • Remember: accessibility benefits everyone
-
-      REMEMBER: Most barriers are easy to fix when you think about them upfront.
-      Your students will thank you.
-        `;
-      const element=document.createElement('a');
-      element.setAttribute('href','data:text/plain;charset=utf-8,'+encodeURIComponent(checklist));
-      element.setAttribute('download','Accessibility_Checklist.txt');
-      element.style.display='none';
-      document.body.appendChild(element);element.click();document.body.removeChild(element);
+    if (id === 'screen-s4') {
+      startTimer();
     }
-  </script>
+  }
+
+  function goTo(id) {
+    showScreen(id);
+    history.pushState({ screen: id }, '');
+  }
+
+  function goBack() {
+    if (history.state && history.state.screen !== 'screen-hero') {
+      history.back();
+    } else {
+      showScreen('screen-hero');
+    }
+  }
+
+  window.addEventListener('popstate', (e) => {
+    const id = (e.state && e.state.screen) || 'screen-hero';
+    showScreen(id);
+  });
+
+  // Initialize history state on page load
+  history.replaceState({ screen: 'screen-hero' }, '');
+
+  function downloadChecklist() {
+    const checklist = `
+THROUGH DIFFERENT EYES — ACCESSIBILITY CHECKLIST
+================================================
+
+Quick Wins You Can Implement Today:
+
+☐ SYLLABUS
+  • Convert PDFs to accessible Word documents with real text (not scans)
+  • Add alt text to any images
+  • Use clear headings and structure
+  • Provide in multiple formats (PDF, Word, HTML)
+
+☐ LECTURES
+  • Enable captions on Zoom/Teams
+  • Don't rely on auto-captions alone for critical info (dates, names, terms)
+  • Post exam dates and key facts in writing, not just verbally
+  • Consider hiring a captioner (CART) for important lectures
+  • Provide lecture notes or transcripts
+  • Record lectures for asynchronous access
+
+☐ READINGS
+  • Favor active voice over passive voice
+  • Define jargon and technical terms the first time they appear
+  • Break long, multi-clause sentences into shorter ones
+  • Use headings, bullet points, and bolded key terms
+  • Provide a plain-language summary alongside dense material
+  • Use accessible fonts (sans-serif, 12pt minimum) and sufficient contrast
+
+☐ QUIZZES & ASSESSMENTS
+  • Avoid drag-and-drop and timed quizzes
+  • Use keyboard-accessible formats
+  • Offer extended time as standard, not as a special accommodation
+  • Provide alternative assessment formats
+  • Test knowledge, not motor skills or processing speed
+
+☐ GENERAL PRACTICES
+  • Ask your students what they need
+  • Create a culture where asking for help is normal
+  • Use universal design principles from the start
+  • Test your materials with accessibility tools
+  • Partner with your disability services office
+  • Remember: accessibility benefits everyone
+
+REMEMBER: Most barriers are easy to fix when you think about them upfront.
+Your students will thank you.
+    `;
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(checklist));
+    element.setAttribute('download', 'Accessibility_Checklist.txt');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+</script>
 
 </body>
 </html>
